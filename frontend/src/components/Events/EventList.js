@@ -1,8 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getEvents } from '../../store/event'
+import { useEffect } from 'react';
 
 
 export default function EventList() {
-    const events = useSelector(state => state.events);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getEvents())
+    }, [])
+
+    const events = useSelector(store => store.eventReducer);
     const eventsArr = Object.values(events);
 
     return (

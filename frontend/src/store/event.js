@@ -9,13 +9,13 @@ export const load = (events) => {
     }
   }
 
-/* ------ Fetch? ------ */
+/* ------ THUNK ------ communicates to backend api and retrieves it */
 export const getEvents = () => async (dispatch) => {
     const response = await csrfFetch(`/api/events`)
 
     if (response.ok) {
-        const list = await response.json();
-        dispatch(load(list))
+        const events = await response.json();
+        dispatch(load(events))    // this is the action that is passed into the reduces
     }
 }
 
