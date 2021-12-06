@@ -29,7 +29,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      userId: {
+      hostId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {model: 'Users'}

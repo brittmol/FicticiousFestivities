@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     datetime: DataTypes.DATE,
     summary: DataTypes.TEXT,
     image: DataTypes.TEXT,
-    userId: DataTypes.INTEGER,
+    hostId: DataTypes.INTEGER,
   }, {});
   Event.associate = function(models) {
     const columnMapping = {
