@@ -1,7 +1,7 @@
-
+// import events
 
 export default function EventList() {
-    const event = {}
+    const events = Event.findAll()
 
     return (
         <>
