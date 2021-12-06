@@ -22,7 +22,7 @@ export const getEvents = () => async (dispatch) => {
 /* ------ REDUCER ------ */
 
 const initialState = {}
-export default function produceReducer(state = initialState, action) {
+export default function eventReducer(state = initialState, action) {
     switch (action.type) {
       case LOAD: {
         const allEvents = {};
