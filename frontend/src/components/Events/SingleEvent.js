@@ -14,13 +14,12 @@ export default function SingleEvent() {
 
 
     const event = useSelector(store => store.eventReducer);
-    console.log('event =', event)
-    console.log('event?[eventId] =', event?[eventId])
-    console.log('event[id] =', event[Id])
+    // console.log('event =', event)
+    // console.log('event?[eventId] =', event[eventId])
 
     return (
         <>
-            <h2>{event?.title}</h2>
+            {/* <h2>{event.title}</h2> */}
             <h2>Event: {eventId}</h2>
         </>
     )

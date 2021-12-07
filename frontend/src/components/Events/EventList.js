@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getEvents } from '../../store/event'
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 export default function EventList() {
@@ -21,7 +22,9 @@ export default function EventList() {
                 <li>
                     {event.title}
                     <br/>
-                    <img src={event.image} style={{height: '200px'}}></img>
+                    <Link to={`/events/${event.id}`}>
+                        <img src={event.image} style={{height: '200px'}}></img>
+                    </Link>
                 </li>
                 ))}
             </ul>
