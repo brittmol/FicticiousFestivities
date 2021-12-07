@@ -36,7 +36,9 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.post('/new', validateEvent, asyncHandler(async(req, res) => {
   const id = await Event.create(req.body)
-  return res.redirect(`${req.baseUrl}/${id}`);
+  console.log(req.body)
+  return res.json({})
+  // return res.redirect(`${req.baseUrl}/${id}`);
 }))
 
 // router.get('/:id', asyncHandler(async(req, res) => {

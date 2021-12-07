@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createEvent } from '../../store/event';
+import { updateEvent } from '../../store/event';
+import { useParams } from 'react-router';
 
-
-const CreateEventForm = ({user}) => {
+const EditEventForm = () => {
+    const { eventId } = useParams()
     const dispatch = useDispatch()
-    const history = useHistory();
-    // const user = useSelector(store => store.session)
+    const user = useSelector(store => store.session)
 
     const [title, setTitle] = useState("")
     const [location, setLocation] = useState("")
@@ -19,6 +18,8 @@ const CreateEventForm = ({user}) => {
         e.preventDefault();
 
         const payload = {
+            // ...event,
+            eventId,
             title,
             location,
             datetime,
@@ -27,11 +28,7 @@ const CreateEventForm = ({user}) => {
             hostId: user.id,
         };
 
-        const event = await dispatch(createEvent(payload));
-        if (event) {
-          history.push(`/events/${event.id}`);
-        //   hideForm();
-        }
+        let updatedEvent = await dispatch(updateEvent(payload))
     };
 
     return (
@@ -72,4 +69,4 @@ const CreateEventForm = ({user}) => {
 
 }
 
-export default CreateEventForm;
+export default EditEventForm;

@@ -42,7 +42,22 @@ export const createEvent = (data) => async (dispatch) => {
     dispatch(addEvent(newEvent))
     return newEvent;
   }
+}
 
+export const updatedEvent = (data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${data.id}`, {
+    method: 'put',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    const updatedEvent = await response.json();
+    dispatch(addEvent(updatedEvent));
+    return updatedEvent;
+  }
 }
 
 /* ------ REDUCER ------ */
@@ -58,10 +73,10 @@ export default function eventReducer(state = initialState, action) {
         return allEvents
       }
       case ADD_EVENT: {
-        if (!state[action.newEvent.id]) {
+        if (!state[action.event.id]) {
           const newState = {
             ...state,
-            [action.newEvent.id]: action.newEvent
+            [action.event.id]: action.event
           };
           return newState;
         }

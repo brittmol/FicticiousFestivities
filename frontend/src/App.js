@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "./store/session";
 import { Route, Switch } from "react-router";
 import Navigation from "./components/Navigation";
@@ -12,6 +12,8 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+  const user = useSelector(store => store.session)
+
 
   return (
     <>
@@ -24,12 +26,9 @@ function App() {
           <EventList />
         </Route>
         <Route path='/events/:eventId'>
-          <CreateEventForm />
+          <CreateEventForm user={user} />
         </Route>
       </Switch>
-      {/* <main>
-        <EventList />
-      </main> */}
     </>
   );
 }

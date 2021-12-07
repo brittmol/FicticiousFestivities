@@ -36,7 +36,7 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/events">Events</NavLink>
       </li>
       <li>
-        <CreateEventFormModal />
+        <CreateEventFormModal user={sessionUser}/>
       </li>
     </ul>
   );
