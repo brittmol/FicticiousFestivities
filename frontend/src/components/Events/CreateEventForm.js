@@ -7,6 +7,7 @@ import { createEvent } from '../../store/event';
 const CreateEventForm = () => {
     const dispatch = useDispatch()
     const history = useHistory();
+    const user = useSelector(store => store.session)
 
     const [title, setTitle] = useState("")
     const [location, setLocation] = useState("")
@@ -23,7 +24,7 @@ const CreateEventForm = () => {
             datetime,
             summary,
             image,
-            hostId,
+            hostId: user.id,
         };
 
         const event = await dispatch(createEvent(payload));

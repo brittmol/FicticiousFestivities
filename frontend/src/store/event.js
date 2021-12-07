@@ -38,7 +38,7 @@ export const createEvent = (data) => async (dispatch) => {
   })
 
   if (response.ok) {
-    const newEvent = await response.json;
+    const newEvent = await response.json();
     dispatch(addEvent(newEvent))
     return newEvent;
   }
@@ -58,10 +58,10 @@ export default function eventReducer(state = initialState, action) {
         return allEvents
       }
       case ADD_EVENT: {
-        if (!state[action.event.id]) {
+        if (!state[action.newEvent.id]) {
           const newState = {
             ...state,
-            [action.event.id]: action.event
+            [action.newEvent.id]: action.newEvent
           };
           return newState;
         }
