@@ -9,6 +9,14 @@ export const load = (events) => {
   }
 }
 
+const LOAD_ONE = 'event/LOAD_ONE'
+export const loadOne = (event) => {
+  return {
+    type: LOAD_ONE,
+    event
+  }
+}
+
 const ADD_EVENT = 'event/ADD_EVENT'
 export const addEvent = (newEvent) => {
   return {
@@ -24,6 +32,15 @@ export const getEvents = () => async (dispatch) => {
   if (response.ok) {
     const events = await response.json();
     dispatch(load(events))    // this is the action that is passed into the reduces
+  }
+}
+
+export const getSingleEvent = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${id}`)
+
+  if (response.ok) {
+    const event = await response.json();
+    dispatch(loadOne(event))
   }
 }
 
@@ -54,9 +71,9 @@ export const updatedEvent = (data) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const updatedEvent = await response.json();
-    dispatch(addEvent(updatedEvent));
-    return updatedEvent;
+    const newEvent = await response.json();
+    dispatch(addEvent(newEvent));
+    return newEvent;
   }
 }
 
@@ -72,6 +89,15 @@ export default function eventReducer(state = initialState, action) {
         });
         return allEvents
       }
+      case LOAD_ONE: {
+        if (!state[action.event.id]) {
+          const newState = {
+            ...state,
+            [action.event.id]: action.event
+          };
+          return newState;
+        }
+      }
       case ADD_EVENT: {
         if (!state[action.newEvent.id]) {
           const newState = {
@@ -80,13 +106,6 @@ export default function eventReducer(state = initialState, action) {
           };
           return newState;
         }
-        // return {
-        //   ...state,
-        //   [action.newEvent.id]: {
-        //     ...state[action.newEvent.id],
-        //     ...action.newEvent
-        //   }
-        // };
       }
       default:
         return state;

@@ -36,22 +36,23 @@ router.get('/', asyncHandler(async(req, res) => {
 
 router.post('/', validateEvent, asyncHandler(async(req, res) => {
   const event = await Event.create(req.body)
-  console.log(req.body)
   return res.json(event)
-  // return res.redirect(`${req.baseUrl}/${id}`);
 }))
 
-// router.get('/:id', asyncHandler(async(req, res) => {
-
-// })
+router.get('/:id', asyncHandler(async(req, res) => {
+  const event = await Event.findByPk(req.params.id)
+  return res.json(event)
+}))
 
 // router.put('/:id', validateEvent, asyncHandler(async(req, res) => {
-
-// })
+//   const event = await Event.update(req.body, { where: {id: req.params.id} })
+//   return res.json(event)
+// }))
 
 // router.delete('/:id', asyncHandler(async(req, res) => {
-
-// })
+//   const event = await Event.findByPk(req.params.id)
+//   return res.json(event)
+// }))
 
 
 module.exports = router;

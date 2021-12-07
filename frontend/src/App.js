@@ -4,6 +4,7 @@ import * as sessionActions from "./store/session";
 import { Route, Switch } from "react-router";
 import Navigation from "./components/Navigation";
 import EventList from "./components/Events/EventList"
+import SingleEvent from "./components/Events/SingleEvent";
 // import CreateEventForm from "./components/Events/CreateEventForm";
 
 function App() {
@@ -25,9 +26,9 @@ function App() {
         <Route exact path='/events'>
           <EventList />
         </Route>
-        {/* <Route path='/events/:eventId'>
-          <CreateEventForm user={sessionUser} />
-        </Route> */}
+        <Route path='/events/:eventId'>
+          <SingleEvent />
+        </Route>
       </Switch>
     </>
   );
