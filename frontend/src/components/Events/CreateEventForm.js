@@ -23,6 +23,7 @@ const CreateEventForm = () => {
             datetime,
             summary,
             image,
+            hostId,
         };
 
         const event = await dispatch(createEvent(payload));
@@ -30,11 +31,6 @@ const CreateEventForm = () => {
           history.push(`/events/${event.id}`);
         //   hideForm();
         }
-    };
-
-    const handleCancelClick = (e) => {
-        e.preventDefault();
-        // hideForm();
     };
 
     return (
@@ -52,7 +48,7 @@ const CreateEventForm = () => {
                 onChange={(e) => setLocation(e.target.value)}
             />
             <input
-                type='text'
+                type='datetime-local'
                 placeholder='Date and Time'
                 value={datetime}
                 onChange={(e) => setDatetime(e.target.value)}
@@ -70,7 +66,6 @@ const CreateEventForm = () => {
                 onChange={(e) => setImage(e.target.value)}
             />
             <button type="submit">Create New Event</button>
-            <button type="button" onClick={handleCancelClick}>Cancel</button>
         </form>
     )
 

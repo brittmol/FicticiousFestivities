@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import CreateEventFormModal from '../Events';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -35,7 +36,7 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/events">Events</NavLink>
       </li>
       <li>
-        <NavLink exact to="/events/new">Create a new Event</NavLink>
+        <CreateEventFormModal />
       </li>
     </ul>
   );
