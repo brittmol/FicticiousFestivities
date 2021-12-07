@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { createEvent } from '../../store/event';
 
 
-const CreateEventForm = ({user}) => {
+const CreateEventForm = ({user, onClose}) => {
     const dispatch = useDispatch()
     const history = useHistory();
 
@@ -27,10 +27,11 @@ const CreateEventForm = ({user}) => {
         };
 
         const event = await dispatch(createEvent(payload));
+        console.log('event =', event)
         if (event) {
-        //   history.push(`/events/${event.id}`);
-          history.push(`/events`);
-
+          onClose()
+          history.push(`/events/${event.id}`);
+        //   history.push(`/events`);
         }
     };
 

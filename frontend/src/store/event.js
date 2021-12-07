@@ -29,7 +29,7 @@ export const getEvents = () => async (dispatch) => {
 
 export const createEvent = (data) => async (dispatch) => {
   console.log(data)
-  const response = await csrfFetch(`/api/events/new`, {
+  const response = await csrfFetch(`/api/events`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
