@@ -13,7 +13,10 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <ProfileButton user={sessionUser} />
+        <CreateEventFormModal user={sessionUser}/>
+      </>
     );
   } else {
     sessionLinks = (
@@ -34,9 +37,6 @@ function Navigation({ isLoaded }){
       </li>
       <li>
         <NavLink exact to="/events">Events</NavLink>
-      </li>
-      <li>
-        <CreateEventFormModal user={sessionUser}/>
       </li>
     </ul>
   );

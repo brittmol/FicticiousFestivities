@@ -73,20 +73,20 @@ export default function eventReducer(state = initialState, action) {
         return allEvents
       }
       case ADD_EVENT: {
-        if (!state[action.event.id]) {
+        if (!state[action.newEvent.id]) {
           const newState = {
             ...state,
-            [action.event.id]: action.event
+            [action.newEvent.id]: action.newEvent
           };
           return newState;
         }
-        return {
-          ...state,
-          [action.event.id]: {
-            ...state[action.event.id],
-            ...action.event
-          }
-        };
+        // return {
+        //   ...state,
+        //   [action.newEvent.id]: {
+        //     ...state[action.newEvent.id],
+        //     ...action.newEvent
+        //   }
+        // };
       }
       default:
         return state;

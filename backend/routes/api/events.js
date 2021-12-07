@@ -34,7 +34,7 @@ router.get('/', asyncHandler(async(req, res) => {
   return res.json(events)
 }))
 
-router.post('/new', validateEvent, asyncHandler(async(req, res) => {
+router.post('/', validateEvent, asyncHandler(async(req, res) => {
   const id = await Event.create(req.body)
   console.log(req.body)
   return res.json({})

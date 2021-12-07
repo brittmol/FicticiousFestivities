@@ -4,7 +4,7 @@ import * as sessionActions from "./store/session";
 import { Route, Switch } from "react-router";
 import Navigation from "./components/Navigation";
 import EventList from "./components/Events/EventList"
-import CreateEventForm from "./components/Events/CreateEventForm";
+// import CreateEventForm from "./components/Events/CreateEventForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
-  const user = useSelector(store => store.session)
+  // const sessionUser = useSelector(state => state.session.user);
 
 
   return (
@@ -25,9 +25,9 @@ function App() {
         <Route exact path='/events'>
           <EventList />
         </Route>
-        <Route path='/events/:eventId'>
-          <CreateEventForm user={user} />
-        </Route>
+        {/* <Route path='/events/:eventId'>
+          <CreateEventForm user={sessionUser} />
+        </Route> */}
       </Switch>
     </>
   );
