@@ -18,7 +18,11 @@ export default function EventList() {
             <h2>All Events</h2>
             <ul>
                 {eventsArr.map((event) => (
-                <li>{event.title}</li>
+                <li>
+                    {event.title}
+                    <br/>
+                    <img src={event.image} style={{height: '200px'}}></img>
+                </li>
                 ))}
             </ul>
         </>
