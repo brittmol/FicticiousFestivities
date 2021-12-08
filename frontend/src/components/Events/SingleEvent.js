@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleEvent } from '../../store/event'
 import { useEffect } from 'react';
-// import EditEventForm from './EditEventForm';
+import EditEventFormModal from './EditEventFormModal'
 
 
 export default function SingleEvent() {
@@ -14,18 +14,14 @@ export default function SingleEvent() {
     }, [dispatch, eventId])
 
     const event = useSelector(store => store.eventReducer[eventId]);
-    // console.log('event =', event)
 
     const sessionUser = useSelector(state => state.session.user);
-    // console.log('sessionUser', sessionUser?.id)
-    // console.log('event.hostId', event?.hostId)
-    // console.log('do they equal?', sessionUser?.id === event?.hostId)
 
     let sessionLinks;
     if (sessionUser && sessionUser?.id === event?.hostId) {
       sessionLinks = (
         <>
-            <button>Edit Event</button>
+            <EditEventFormModal user={sessionUser} event={event}/>
         </>
       );
     }
@@ -34,6 +30,13 @@ export default function SingleEvent() {
         <>
             <h2>{event?.title}</h2>
             {sessionLinks}
+            <br/>
+            <img src={event?.image} style={{height: '500px'}}></img>
+            <br/>
+            <p>Location: {event?.location}</p>
+            <p>When: {event?.datetime}</p>
+            <p>About: {event?.summary}</p>
+            <p>Hosted by: {event?.hostId}</p>
         </>
     )
 }

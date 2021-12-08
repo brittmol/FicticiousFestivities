@@ -61,7 +61,7 @@ export const createEvent = (data) => async (dispatch) => {
   }
 }
 
-export const updatedEvent = (data) => async (dispatch) => {
+export const updateEvent = (data) => async (dispatch) => {
   const response = await csrfFetch(`/api/events/${data.id}`, {
     method: 'put',
     headers: {
@@ -90,22 +90,20 @@ export default function eventReducer(state = initialState, action) {
         return allEvents
       }
       case LOAD_ONE: {
-        if (!state[action.event.id]) {
           const newState = {
             ...state,
             [action.event.id]: action.event
           };
           return newState;
-        }
       }
       case ADD_EVENT: {
-        if (!state[action.newEvent.id]) {
+        // if (!state[action.newEvent.id]) {
           const newState = {
             ...state,
             [action.newEvent.id]: action.newEvent
           };
           return newState;
-        }
+        // }
       }
       default:
         return state;

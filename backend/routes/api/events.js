@@ -44,10 +44,11 @@ router.get('/:id', asyncHandler(async(req, res) => {
   return res.json(event)
 }))
 
-// router.put('/:id', validateEvent, asyncHandler(async(req, res) => {
-//   const event = await Event.update(req.body, { where: {id: req.params.id} })
-//   return res.json(event)
-// }))
+router.put('/:id', validateEvent, asyncHandler(async(req, res) => {
+  const event = await Event.findByPk(req.params.id)
+  const updatedEvent = await event.update(req.body)
+  return res.json(updatedEvent)
+}))
 
 // router.delete('/:id', asyncHandler(async(req, res) => {
 //   const event = await Event.findByPk(req.params.id)

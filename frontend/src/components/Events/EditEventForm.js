@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { updateEvent } from '../../store/event';
 import { useParams } from 'react-router';
 
-const EditEventForm = () => {
+const EditEventForm = ({event, onClose}) => {
     const { eventId } = useParams()
     const dispatch = useDispatch()
+    const history = useHistory();
     const user = useSelector(store => store.session)
 
-    const [title, setTitle] = useState("")
-    const [location, setLocation] = useState("")
-    const [datetime, setDatetime] = useState("")
-    const [summary, setSummary] = useState("")
-    const [image, setImage] = useState("")
+    const [title, setTitle] = useState(event?.title || "")
+    const [location, setLocation] = useState(event?.location || "")
+    const [datetime, setDatetime] = useState(event?.datetime || "")
+    const [summary, setSummary] = useState(event?.summary || "")
+    const [image, setImage] = useState(event?.image || "")
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const payload = {
-            // ...event,
-            eventId,
+            id: eventId,
             title,
             location,
             datetime,
@@ -29,6 +30,10 @@ const EditEventForm = () => {
         };
 
         let updatedEvent = await dispatch(updateEvent(payload))
+        if (updatedEvent) {
+            onClose()
+            history.push(`/events/${event.id}`);
+        }
     };
 
     return (
@@ -63,7 +68,7 @@ const EditEventForm = () => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
             />
-            <button type="submit">Create New Event</button>
+            <button type="submit">Edit Event</button>
         </form>
     )
 
