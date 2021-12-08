@@ -11,7 +11,10 @@ function CreateEventFormModal({user}) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Create New Event</button>
+      <button className="tickets-button" onClick={() => setShowModal(true)}>
+        <i className="fas fa-calendar-alt" />
+        Create New Event
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateEventForm user={user} onClose={onCloseModal}/>

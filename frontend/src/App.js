@@ -15,21 +15,28 @@ function App() {
   }, [dispatch]);
   // const sessionUser = useSelector(state => state.session.user);
 
-
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      <Switch>
-        <Route exact path='/'>
-          <h2> Splash page </h2>
-        </Route>
-        <Route exact path='/events'>
-          <EventList />
-        </Route>
-        <Route path='/events/:eventId'>
-          <SingleEvent />
-        </Route>
-      </Switch>
+      <nav>
+        <Navigation isLoaded={isLoaded} />
+        <button className="tickets-button">
+          <i className="fas fa-ticket-alt" />
+          Tickets
+        </button>
+      </nav>
+      <main>
+        <Switch>
+          <Route exact path='/'>
+            <h2> Splash page </h2>
+          </Route>
+          <Route exact path='/events'>
+            <EventList />
+          </Route>
+          <Route path='/events/:eventId'>
+            <SingleEvent />
+          </Route>
+        </Switch>
+      </main>
     </>
   );
 }

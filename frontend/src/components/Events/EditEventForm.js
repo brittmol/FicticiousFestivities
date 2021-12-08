@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { updateEvent } from '../../store/event';
+import { updateEvent, removeEvent } from '../../store/event';
 import { useParams } from 'react-router';
 
 const EditEventForm = ({event, onClose}) => {
@@ -69,6 +69,13 @@ const EditEventForm = ({event, onClose}) => {
                 onChange={(e) => setImage(e.target.value)}
             />
             <button type="submit">Edit Event</button>
+            <button onClick={() => {
+                dispatch(removeEvent(event))
+                history.push(`/events`)
+            }}
+            >
+                Delete Event
+            </button>
         </form>
     )
 

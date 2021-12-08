@@ -16,6 +16,15 @@ export default function SingleEvent() {
 
     const event = useSelector(store => store.eventReducer[eventId]);
 
+    // const onSubmit = (e) => {
+    //     e.preventDefault()
+    //     window.alert(
+    //         "Are you sure you would like to Delete this event?"
+    //     )
+    //     dispatch(removeEvent(event))
+    //     history.push(`/events`)
+    // }
+
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
@@ -23,13 +32,17 @@ export default function SingleEvent() {
       sessionLinks = (
         <>
             <EditEventFormModal user={sessionUser} event={event}/>
-            <button onClick={() => {
+            {/* <button onClick={() => {
                 dispatch(removeEvent(event))
                 history.push(`/events`)
             }}
                  >
                 Delete Event
+            </button> */}
+            <button>
+                Get Ticket!
             </button>
+
         </>
       );
     }
