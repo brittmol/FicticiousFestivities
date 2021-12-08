@@ -6,6 +6,7 @@ const { User, Event, Ticket } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { response } = require('express');
 
 const router = express.Router();
 
@@ -29,25 +30,32 @@ const validateEvent = [
 ]
 
 router.get('/', asyncHandler(async(req, res) => {
-    const events = await Event.findAll()
-    return res.json(events)
+  const events = await Event.findAll()
+  return res.json(events)
 }))
 
-// router.post('/', validateEvent, asyncHandler(async(req, res) => {
+router.post('/', validateEvent, asyncHandler(async(req, res) => {
+  const event = await Event.create(req.body)
+  return res.json(event)
+}))
 
-// })
+router.get('/:id', asyncHandler(async(req, res) => {
+  const event = await Event.findByPk(req.params.id)
+  return res.json(event)
+}))
 
-// router.get('/:id', asyncHandler(async(req, res) => {
+router.put('/:id', validateEvent, asyncHandler(async(req, res) => {
+  const event = await Event.findByPk(req.params.id)
+  const updatedEvent = await event.update(req.body)
+  return res.json(updatedEvent)
+}))
 
-// })
-
-// router.put('/:id', validateEvent, asyncHandler(async(req, res) => {
-
-// })
-
-// router.delete('/:id', asyncHandler(async(req, res) => {
-
-// })
+router.delete('/:id', asyncHandler(async(req, res) => {
+  const event = await Event.findByPk(req.params.id)
+  if (!event) throw new Error('Cannot find event');
+  await event.destroy();
+  return res.json({})
+}))
 
 
 module.exports = router;

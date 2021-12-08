@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     hostId: DataTypes.INTEGER,
   }, {});
   Event.associate = function(models) {
+    Event.belongsTo(models.User, {foreignKey: 'hostId'})
     const columnMapping = {
       through: "Ticket",
       otherKey: "userId",
