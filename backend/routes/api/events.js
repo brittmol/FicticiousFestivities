@@ -50,10 +50,12 @@ router.put('/:id', validateEvent, asyncHandler(async(req, res) => {
   return res.json(updatedEvent)
 }))
 
-// router.delete('/:id', asyncHandler(async(req, res) => {
-//   const event = await Event.findByPk(req.params.id)
-//   return res.json(event)
-// }))
+router.delete('/:id', asyncHandler(async(req, res) => {
+  const event = await Event.findByPk(req.params.id)
+  if (!event) throw new Error('Cannot find event');
+  await event.destroy();
+  return res.json({})
+}))
 
 
 module.exports = router;

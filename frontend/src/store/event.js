@@ -25,6 +25,14 @@ export const addEvent = (newEvent) => {
   }
 }
 
+const DELETE_EVENT = 'event/DELETE_EVENT'
+export const deleteEvent = (event) => {
+  return {
+    type: DELETE_EVENT,
+    event
+  }
+}
+
 /* ------ THUNK ------ communicates to backend api and retrieves it */
 export const getEvents = () => async (dispatch) => {
   const response = await csrfFetch(`/api/events`)
@@ -77,6 +85,17 @@ export const updateEvent = (data) => async (dispatch) => {
   }
 }
 
+export const removeEvent = (data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${data.id}`, {
+    method: 'delete'
+  });
+
+  if (response.ok) {
+    const event = await response.json();
+    dispatch(deleteEvent(event));
+  }
+}
+
 /* ------ REDUCER ------ */
 
 const initialState = {}
@@ -97,13 +116,16 @@ export default function eventReducer(state = initialState, action) {
           return newState;
       }
       case ADD_EVENT: {
-        // if (!state[action.newEvent.id]) {
           const newState = {
             ...state,
             [action.newEvent.id]: action.newEvent
           };
           return newState;
-        // }
+      }
+      case DELETE_EVENT: {
+        const newState = { ...state };
+        delete newState[action.event];
+        return newState;
       }
       default:
         return state;

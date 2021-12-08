@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getSingleEvent } from '../../store/event'
+import { useParams, useHistory } from 'react-router-dom';
+import { getSingleEvent, removeEvent } from '../../store/event'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
 
@@ -8,6 +8,7 @@ import EditEventFormModal from './EditEventFormModal'
 export default function SingleEvent() {
     const { eventId } = useParams();
     const dispatch = useDispatch()
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getSingleEvent(eventId))
@@ -22,6 +23,13 @@ export default function SingleEvent() {
       sessionLinks = (
         <>
             <EditEventFormModal user={sessionUser} event={event}/>
+            <button onClick={() => {
+                dispatch(removeEvent(event))
+                history.push(`/events`)
+            }}
+                 >
+                Delete Event
+            </button>
         </>
       );
     }

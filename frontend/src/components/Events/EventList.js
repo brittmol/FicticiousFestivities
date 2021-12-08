@@ -18,7 +18,7 @@ export default function EventList() {
         <>
             <h2>All Events</h2>
             <ul>
-                {eventsArr.map((event) => (
+                {eventsArr?.map((event) => (
                 <li>
                     {event.title}
                     <br/>
