@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
-import { getSingleEvent, removeEvent } from '../../store/event'
+import { getSingleEvent} from '../../store/event'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
 

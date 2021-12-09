@@ -9,13 +9,6 @@ export const load = (tickets) => {
   }
 }
 
-// const DELETE_TICKET = 'ticket/DELETE_TICKET'
-// export const deleteTicket = (ticket) => {
-//   return {
-//     type: DELETE_TICKET,
-//     ticket
-//   }
-// }
 
 /* ------ THUNK ------ communicates to backend api and retrieves it */
 export const getTickets = () => async (dispatch) => {
@@ -27,34 +20,19 @@ export const getTickets = () => async (dispatch) => {
   }
 }
 
-// export const removeTicket = (data) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/mytickets/${data.id}`, {
-//     method: 'delete'
-//   });
-
-//   if (response.ok) {
-//     const ticket = await response.json();
-//     dispatch(deleteTicket(ticket));
-//   }
-// }
-
 /* ------ REDUCER ------ */
 
 const initialState = {}
 export default function ticketReducer(state = initialState, action) {
     switch (action.type) {
       case LOAD: {
+        // const allTickets ={ event: action.tickets.length }
         const allTickets = {};
         action.tickets.forEach(ticket => {
-          allTickets[ticket.id] = ticket;
+          allTickets[ticket.eventId] = ticket;
         });
         return allTickets
       }
-      // case DELETE_TICKET: {
-      //   const newState = { ...state };
-      //   delete newState[action.ticket];
-      //   return newState;
-      // }
       default:
         return state;
     }
