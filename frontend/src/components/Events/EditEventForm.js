@@ -38,6 +38,7 @@ const EditEventForm = ({event, onClose}) => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <h2>Edit Event</h2>
             <input
                 type='text'
                 placeholder='Event Title'

@@ -37,6 +37,7 @@ const CreateEventForm = ({user, onClose}) => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <h2>Create Event</h2>
             <input
                 type='text'
                 placeholder='Event Title'
