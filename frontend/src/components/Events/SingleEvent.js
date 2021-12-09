@@ -8,23 +8,12 @@ import EditEventFormModal from './EditEventFormModal'
 export default function SingleEvent() {
     const { eventId } = useParams();
     const dispatch = useDispatch()
-    const history = useHistory();
 
     useEffect(() => {
         dispatch(getSingleEvent(eventId))
     }, [dispatch, eventId])
 
     const event = useSelector(store => store.eventReducer[eventId]);
-
-    // const onSubmit = (e) => {
-    //     e.preventDefault()
-    //     window.alert(
-    //         "Are you sure you would like to Delete this event?"
-    //     )
-    //     dispatch(removeEvent(event))
-    //     history.push(`/events`)
-    // }
-
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
@@ -32,14 +21,11 @@ export default function SingleEvent() {
       sessionLinks = (
         <>
             <EditEventFormModal user={sessionUser} event={event}/>
-            {/* <button onClick={() => {
-                dispatch(removeEvent(event))
-                history.push(`/events`)
-            }}
-                 >
-                Delete Event
-            </button> */}
-            <button>
+            <button
+                className='get-ticket-button'
+                // className={"like-button" + (produce.liked ? " selected" : "")}
+                // onClick={() => dispatch(toggleLike(produce.id))}
+            >
                 Get Ticket!
             </button>
 

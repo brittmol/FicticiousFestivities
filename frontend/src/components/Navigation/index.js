@@ -38,6 +38,9 @@ function Navigation({ isLoaded }){
       <li>
         <NavLink exact to="/events">Events</NavLink>
       </li>
+      <li>
+        <NavLink exact to="/mytickets">MyTickets</NavLink>
+      </li>
     </ul>
   );
 }

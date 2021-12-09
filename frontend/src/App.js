@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router";
 import Navigation from "./components/Navigation";
 import EventList from "./components/Events/EventList"
 import SingleEvent from "./components/Events/SingleEvent";
-// import CreateEventForm from "./components/Events/CreateEventForm";
+import MyTickets from "./components/MyTickets/MyTickets";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +34,9 @@ function App() {
           </Route>
           <Route path='/events/:eventId'>
             <SingleEvent />
+          </Route>
+          <Route path='/mytickets'>
+            <MyTickets />
           </Route>
         </Switch>
       </main>
