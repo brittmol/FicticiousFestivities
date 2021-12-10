@@ -19,7 +19,12 @@ router.post('/', requireAuth, asyncHandler(async(req, res) => {
 }))
 
 router.delete('/:eventId', requireAuth, asyncHandler(async(req, res) => {
-    const ticket = await Ticket.findByPk(req.params.eventId)
+    const ticket = await Ticket.findOne({
+        where: {
+            eventId: req.params.eventId,
+            userId: req.user.id
+        }
+    })
     if (!ticket) throw new Error('Cannot find ticket');
     await ticket.destroy();
     return res.json({})

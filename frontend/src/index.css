@@ -40,9 +40,8 @@ main {
   margin-top: 54px;
   transition: all 0.2s linear;
   padding: 16px;
+  background-image: url("https://source.unsplash.com/1vzLW-ihJaM/1920x1080");
 }
-
-
 
 button {
   cursor: pointer;
@@ -53,7 +52,7 @@ button:focus {
 }
 
 
-
+button,
 .tickets-button,
 button[type="submit"] {
   color: coral;
@@ -62,6 +61,7 @@ button[type="submit"] {
   border: 0;
   border-radius: 8px;
   min-width: 32px;
+  padding: 0px 10px;
 }
 
 .tickets-button i {

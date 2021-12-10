@@ -35,7 +35,7 @@ export default function SingleEvent() {
                 className='get-ticket-button'
                 onClick={() => {
                     dispatch(createTicket(sessionUser.id, eventId))
-                    // history.push('/mytickets')
+                    history.push('/mytickets')
                 }}
                 // className={"like-button" + (produce.liked ? " selected" : "")}
                 // onClick={() => dispatch(toggleLike(produce.id))}
@@ -45,21 +45,21 @@ export default function SingleEvent() {
             <button
                 className='get-ticket-button'
                 onClick={() => {
-                    dispatch(removeTicket(sessionUser.id, eventId))
-                    // history.push('/mytickets')
+                    dispatch(removeTicket(eventId))
+                    history.push('/mytickets')
                 }}
-                // className={"like-button" + (produce.liked ? " selected" : "")}
-                // onClick={() => dispatch(toggleLike(produce.id))}
             >
                 Remove Ticket!
             </button>
-            <br/>
-            <img src={event?.image} style={{height: '500px'}}></img>
-            <br/>
-            <p>Location: {event?.location}</p>
-            <p>When: {event?.datetime}</p>
-            <p>About: {event?.summary}</p>
-            <p>Hosted by: {event?.hostId}</p>
+            <div style={{border: '5px lightgray solid', width: '1000px', padding: '20px', margin: '20px', backgroundColor: 'lightgray'}}>
+                <br/>
+                <img src={event?.image} style={{height: '500px'}}></img>
+                <br/>
+                <p>Location: {event?.location}</p>
+                <p>When: {event?.datetime}</p>
+                <p>About: {event?.summary}</p>
+                <p>Hosted by: {event?.hostId}</p>
+            </div>
         </main>
     )
 }

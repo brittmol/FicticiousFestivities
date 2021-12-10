@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getTickets } from '../../store/ticket'
+import { getTickets, removeTicket } from '../../store/ticket'
 import { getEvents } from '../../store/event'
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -18,8 +18,8 @@ export default function MyTickets() {
     }, [])
 
     // if session user does not exist redirect to events list
-    const sessionUser = useSelector(state => state.session.user);
-    if (!sessionUser) history.push('/events')
+    // const sessionUser = useSelector(state => state.session.user);
+    // if (!sessionUser) history.push('/events')
 
     const tickets = useSelector(store => store.ticketReducer);
     const ticketsArr = Object.values(tickets);
@@ -33,7 +33,7 @@ export default function MyTickets() {
             <h2>All My Tickets</h2>
             <ul>
             {ticketsArr?.map((ticket) => (
-                <div style={{border: '5px lightgray solid', width: '450px', padding: '20px', margin: '20px'}}>
+                <div style={{border: '5px lightgray solid', width: '450px', padding: '20px', margin: '20px', backgroundColor: 'lightgray'}}>
                     <li>
                         userId = {ticket?.userId}
                     </li>
@@ -41,12 +41,23 @@ export default function MyTickets() {
                         eventId = {ticket?.eventId}
                     </li>
                     <li>
-                        {eventsArr[ticket?.eventId -1]?.title}
+                        {events[ticket?.eventId]?.title}
                     </li>
                     <li>
                         <Link to={`/events/${ticket?.eventId}`}>
-                            <img src={eventsArr[ticket?.eventId -1]?.image} style={{height: '200px'}}></img>
+                            <img src={events[ticket?.eventId]?.image} style={{height: '200px'}}></img>
                         </Link>
+                    </li>
+                    <li>
+                    <button
+                        className='get-ticket-button'
+                        onClick={() => {
+                            dispatch(removeTicket(ticket?.eventId))
+                            history.push('/mytickets')
+                        }}
+                    >
+                        Remove Ticket!
+                    </button>
                     </li>
                 </div>
                 ))}

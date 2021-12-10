@@ -10,19 +10,18 @@ export const load = (tickets) => {
 }
 
 const ADD_TICKET = 'ticket/ADD_TICKET'
-export const addTicket = (userId, eventId) => {
+export const addTicket = (ticket) => {
   return {
     type: ADD_TICKET,
-    userId,
-    eventId
+    ticket
   }
 }
 
 const DELETE_TICKET = 'ticket/DELETE_TICKET'
-export const deleteTicket = (ticket) => {
+export const deleteTicket = (eventId) => {
   return {
     type: DELETE_TICKET,
-    ticket
+    eventId
   }
 }
 
@@ -53,14 +52,14 @@ export const createTicket = (userId, eventId) => async (dispatch) => {
   }
 }
 
-export const removeTicket = () => async (dispatch) => {
+export const removeTicket = (eventId) => async (dispatch) => {
   const response = await csrfFetch(`/api/mytickets/${eventId}`, {
     method: 'delete'
   });
 
   if (response.ok) {
-    const ticket = await response.json();
-    dispatch(deleteTicket(ticket));
+    // don't need to await response because it is an empty object
+    dispatch(deleteTicket(eventId));
   }
 }
 
@@ -80,9 +79,8 @@ export default function ticketReducer(state = initialState, action) {
       case ADD_TICKET: {
         const newState = {
           ...state,
-          [action.eventId]: {
-            ...state[action.eventId],
-            userId: action.userId
+          [action.ticket.eventId]: {
+              ...action.ticket
           }
         };
         return newState;
