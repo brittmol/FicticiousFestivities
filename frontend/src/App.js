@@ -19,10 +19,10 @@ function App() {
     <>
       <nav>
         <Navigation isLoaded={isLoaded} />
-        <button className="tickets-button">
+        {/* <button className="tickets-button">
           <i className="fas fa-ticket-alt" />
           Tickets
-        </button>
+        </button> */}
       </nav>
       <main>
         <Switch>

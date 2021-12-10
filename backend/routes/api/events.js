@@ -34,7 +34,7 @@ router.get('/', asyncHandler(async(req, res) => {
   return res.json(events)
 }))
 
-router.post('/', validateEvent, asyncHandler(async(req, res) => {
+router.post('/', requireAuth, validateEvent, asyncHandler(async(req, res) => {
   const event = await Event.create(req.body)
   return res.json(event)
 }))
@@ -44,13 +44,13 @@ router.get('/:id', asyncHandler(async(req, res) => {
   return res.json(event)
 }))
 
-router.put('/:id', validateEvent, asyncHandler(async(req, res) => {
+router.put('/:id', requireAuth, validateEvent, asyncHandler(async(req, res) => {
   const event = await Event.findByPk(req.params.id)
   const updatedEvent = await event.update(req.body)
   return res.json(updatedEvent)
 }))
 
-router.delete('/:id', asyncHandler(async(req, res) => {
+router.delete('/:id', requireAuth, asyncHandler(async(req, res) => {
   const event = await Event.findByPk(req.params.id)
   if (!event) throw new Error('Cannot find event');
   await event.destroy();

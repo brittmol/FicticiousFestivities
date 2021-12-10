@@ -16,6 +16,10 @@ function Navigation({ isLoaded }){
       <>
         <ProfileButton user={sessionUser} />
         <CreateEventFormModal user={sessionUser}/>
+        <button className="tickets-button">
+          <i className="fas fa-ticket-alt" />
+          <NavLink exact to="/mytickets">MyTickets</NavLink>
+        </button>
       </>
     );
   } else {
@@ -37,9 +41,6 @@ function Navigation({ isLoaded }){
       </li>
       <li>
         <NavLink exact to="/events">Events</NavLink>
-      </li>
-      <li>
-        <NavLink exact to="/mytickets">MyTickets</NavLink>
       </li>
     </ul>
   );

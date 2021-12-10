@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTickets } from '../../store/ticket'
 import { getEvents } from '../../store/event'
 import { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function MyTickets() {
     const dispatch = useDispatch()
@@ -27,13 +27,22 @@ export default function MyTickets() {
             <h2>All Tickets</h2>
             <ul>
             {ticketsArr?.map((ticket) => (
-                <li>
-                    userId = {ticket.userId}
-                    ---------------
-                    eventId = {ticket.eventId}
-                    ---------------
-                    event title = {eventsArr[ticket.eventId].title}
-                </li>
+                <div>
+                    <li>
+                        userId = {ticket.userId}
+                    </li>
+                    <li>
+                        eventId = {ticket.eventId}
+                    </li>
+                    <li>
+                        {eventsArr[ticket.eventId -1].title}
+                    </li>
+                    <li>
+                        <Link to={`/events/${ticket.eventId}`}>
+                            <img src={eventsArr[ticket.eventId -1].image} style={{height: '200px'}}></img>
+                        </Link>
+                    </li>
+                </div>
                 ))}
             </ul>
         </>

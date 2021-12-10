@@ -13,11 +13,16 @@ router.get('/', requireAuth, asyncHandler(async(req, res) => {
     return res.json(tickets)
 }))
 
-// router.delete('/:id', asyncHandler(async(req, res) => {
-//     const ticket = await Ticket.findByPk(req.params.id)
-//     if (!ticket) throw new Error('Cannot find ticket');
-//     await ticket.destroy();
-//     return res.json({})
-// }))
+router.post('/', requireAuth, asyncHandler(async(req, res) => {
+    const ticket = await Ticket.create(req.body)
+    return res.json(ticket)
+}))
+
+router.delete('/:eventId', requireAuth, asyncHandler(async(req, res) => {
+    const ticket = await Ticket.findByPk(req.params.eventId)
+    if (!ticket) throw new Error('Cannot find ticket');
+    await ticket.destroy();
+    return res.json({})
+}))
 
 module.exports = router;
