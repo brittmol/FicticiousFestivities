@@ -19,16 +19,6 @@ function LoginForm() {
     );
   };
 
-  const handleDemo = () => {
-    setErrors([]);
-    return dispatch(sessionActions.demoUser({ credential, password }))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
-  }
-
   return (
     <form onSubmit={handleSubmit}>
       <ul>
@@ -52,7 +42,6 @@ function LoginForm() {
         required
       />
       <button type="submit">Log In</button>
-      <button onClick={handleDemo}>Demo User</button>
     </form>
   );
 }

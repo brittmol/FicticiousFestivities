@@ -37,14 +37,13 @@ export const getTickets = () => async (dispatch) => {
   }
 }
 
-export const createTicket = (data) => async (dispatch) => {
-  console.log(data)
-  const response = await csrfFetch(`/api/tickets`, {
+export const createTicket = (userId, eventId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/mytickets`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify({userId, eventId})
   })
 
   if (response.ok) {
@@ -54,8 +53,8 @@ export const createTicket = (data) => async (dispatch) => {
   }
 }
 
-export const removeTicket = (data) => async (dispatch) => {
-  const response = await csrfFetch(`/api/tickets/${data.id}`, {
+export const removeTicket = () => async (dispatch) => {
+  const response = await csrfFetch(`/api/mytickets/${eventId}`, {
     method: 'delete'
   });
 
@@ -90,7 +89,7 @@ export default function ticketReducer(state = initialState, action) {
       }
       case DELETE_TICKET: {
         const newState = { ...state };
-        delete newState[action.ticket];
+        delete newState[action.eventId];
         return newState;
       }
       default:

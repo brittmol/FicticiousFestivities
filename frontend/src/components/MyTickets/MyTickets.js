@@ -29,28 +29,28 @@ export default function MyTickets() {
 
     console.log('ticketsArr =', ticketsArr)
     return (
-        <>
+        <main>
             <h2>All My Tickets</h2>
             <ul>
             {ticketsArr?.map((ticket) => (
                 <div style={{border: '5px lightgray solid', width: '450px', padding: '20px', margin: '20px'}}>
                     <li>
-                        userId = {ticket.userId}
+                        userId = {ticket?.userId}
                     </li>
                     <li>
-                        eventId = {ticket.eventId}
+                        eventId = {ticket?.eventId}
                     </li>
                     <li>
-                        {eventsArr[ticket.eventId -1].title}
+                        {eventsArr[ticket?.eventId -1]?.title}
                     </li>
                     <li>
-                        <Link to={`/events/${ticket.eventId}`}>
-                            <img src={eventsArr[ticket.eventId -1].image} style={{height: '200px'}}></img>
+                        <Link to={`/events/${ticket?.eventId}`}>
+                            <img src={eventsArr[ticket?.eventId -1]?.image} style={{height: '200px'}}></img>
                         </Link>
                     </li>
                 </div>
                 ))}
             </ul>
-        </>
+        </main>
     )
 }

@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getSingleEvent} from '../../store/event'
-import { createTicket } from '../../store/ticket'
+import { createTicket, removeTicket } from '../../store/ticket'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
 
@@ -9,6 +9,7 @@ import EditEventFormModal from './EditEventFormModal'
 export default function SingleEvent() {
     const { eventId } = useParams();
     const dispatch = useDispatch()
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getSingleEvent(eventId))
@@ -32,11 +33,25 @@ export default function SingleEvent() {
             {sessionLinks}
             <button
                 className='get-ticket-button'
-                onClick={() => dispatch(createTicket(sessionUser.id, eventId))}
+                onClick={() => {
+                    dispatch(createTicket(sessionUser.id, eventId))
+                    // history.push('/mytickets')
+                }}
                 // className={"like-button" + (produce.liked ? " selected" : "")}
                 // onClick={() => dispatch(toggleLike(produce.id))}
             >
                 Get Ticket!
+            </button>
+            <button
+                className='get-ticket-button'
+                onClick={() => {
+                    dispatch(removeTicket(sessionUser.id, eventId))
+                    // history.push('/mytickets')
+                }}
+                // className={"like-button" + (produce.liked ? " selected" : "")}
+                // onClick={() => dispatch(toggleLike(produce.id))}
+            >
+                Remove Ticket!
             </button>
             <br/>
             <img src={event?.image} style={{height: '500px'}}></img>
