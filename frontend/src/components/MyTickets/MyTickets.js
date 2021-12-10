@@ -27,7 +27,7 @@ export default function MyTickets() {
             <h2>All Tickets</h2>
             <ul>
             {ticketsArr?.map((ticket) => (
-                <div>
+                <div style={{border: '5px lightgray solid', width: '450px', padding: '20px', margin: '20px'}}>
                     <li>
                         userId = {ticket.userId}
                     </li>
