@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import EventList from "./components/Events/EventList"
 import SingleEvent from "./components/Events/SingleEvent";
 import MyTickets from "./components/MyTickets/MyTickets";
+import SplashPage from "./components/SplashPage/SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,29 +18,23 @@ function App() {
 
   return (
     <>
-      <nav>
-        <Navigation isLoaded={isLoaded} />
-        {/* <button className="tickets-button">
-          <i className="fas fa-ticket-alt" />
-          Tickets
-        </button> */}
-      </nav>
-      <main>
         <Switch>
           <Route exact path='/'>
-            <h2> Splash page </h2>
+            <SplashPage />
           </Route>
           <Route exact path='/events'>
+            <Navigation isLoaded={isLoaded} />
             <EventList />
           </Route>
           <Route path='/events/:eventId'>
+            <Navigation isLoaded={isLoaded} />
             <SingleEvent />
           </Route>
           <Route path='/mytickets'>
+            <Navigation isLoaded={isLoaded} />
             <MyTickets />
           </Route>
         </Switch>
-      </main>
     </>
   );
 }

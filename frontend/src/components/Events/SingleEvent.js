@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getSingleEvent} from '../../store/event'
+import { createTicket } from '../../store/ticket'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
 
@@ -21,22 +22,22 @@ export default function SingleEvent() {
       sessionLinks = (
         <>
             <EditEventFormModal user={sessionUser} event={event}/>
-            <button
-                className='get-ticket-button'
-                // className={"like-button" + (produce.liked ? " selected" : "")}
-                // onClick={() => dispatch(toggleLike(produce.id))}
-            >
-                Get Ticket!
-            </button>
-
         </>
       );
     }
 
     return (
-        <>
+        <main>
             <h2>{event?.title}</h2>
             {sessionLinks}
+            <button
+                className='get-ticket-button'
+                onClick={() => dispatch(createTicket(sessionUser.id, eventId))}
+                // className={"like-button" + (produce.liked ? " selected" : "")}
+                // onClick={() => dispatch(toggleLike(produce.id))}
+            >
+                Get Ticket!
+            </button>
             <br/>
             <img src={event?.image} style={{height: '500px'}}></img>
             <br/>
@@ -44,6 +45,6 @@ export default function SingleEvent() {
             <p>When: {event?.datetime}</p>
             <p>About: {event?.summary}</p>
             <p>Hosted by: {event?.hostId}</p>
-        </>
+        </main>
     )
 }

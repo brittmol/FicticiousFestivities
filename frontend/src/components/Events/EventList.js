@@ -15,33 +15,36 @@ export default function EventList() {
     const eventsArr = Object.values(events);
 
     return (
-        <>
-            <h2>All Events</h2>
+        <main>
             {/* <section className='cards'>
                 {eventsArr?.map((event) => (
                     <div className='card'>
-                        <div className='card_content'>
+                    <div className='card_content'>
+                    {event.title}
+                    </div>
+                    <div className='card_img-container'>
+                    <Link to={`/events/${event.id}`}>
+                    <img src={event.image} style={{height: '200px'}}></img>
+                    </Link>
+                    </div>
+                    </div>
+                    ))}
+                </section> */}
+                <h2>All Events</h2>
+            <ul>
+                {eventsArr?.map((event) => (
+                    <div style={{border: '5px lightgray solid', width: '450px', padding: '20px', margin: '20px'}}>
+
+                        <li>
                             {event.title}
-                        </div>
-                        <div className='card_img-container'>
+                            <br/>
                             <Link to={`/events/${event.id}`}>
                                 <img src={event.image} style={{height: '200px'}}></img>
                             </Link>
-                        </div>
+                        </li>
                     </div>
                 ))}
-            </section> */}
-            <ul>
-                {eventsArr?.map((event) => (
-                <li>
-                    {event.title}
-                    <br/>
-                    <Link to={`/events/${event.id}`}>
-                        <img src={event.image} style={{height: '200px'}}></img>
-                    </Link>
-                </li>
-                ))}
             </ul>
-        </>
+        </main>
     )
 }

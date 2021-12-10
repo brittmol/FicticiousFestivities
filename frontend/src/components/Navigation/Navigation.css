@@ -1,0 +1,18 @@
+nav {
+  color: coral;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 54px;
+  background-color: lightgreen;
+  box-shadow: 3px -1px 3px 3px lightgray;
+}
+
+nav {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+}

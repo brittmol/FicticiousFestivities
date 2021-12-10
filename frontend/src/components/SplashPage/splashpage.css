@@ -1,0 +1,20 @@
+div.splashPage {
+  /* background-color: lightseagreen; */
+  background-image: url("https://source.unsplash.com/1vzLW-ihJaM/1920x1080");
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.splashPageHeader,
+.splashPageLink {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 50px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding: 300px;
+}

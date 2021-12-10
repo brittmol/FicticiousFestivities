@@ -47,6 +47,22 @@ router.post(
     })
 );
 
+// Demo
+router.get('/demo', asyncHandler(async(req, res, next) => {
+  const user = await User.login({
+    credential: "Demo-lition",
+    password: 'password'
+  });
+  if (!user) {
+    const err = new Error('Login failed');
+    err.status = 401;
+    err.title = 'Login failed';
+    err.errors = ['The provided credentials were invalid.'];
+    return next(err);
+  }
+}))
+
+
 // Log out (doesn't need asyncHandler or async)
 router.delete(
     '/',

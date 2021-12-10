@@ -10,10 +10,11 @@ export const load = (tickets) => {
 }
 
 const ADD_TICKET = 'ticket/ADD_TICKET'
-export const addTicket = (newTicket) => {
+export const addTicket = (userId, eventId) => {
   return {
     type: ADD_TICKET,
-    newTicket
+    userId,
+    eventId
   }
 }
 
@@ -80,7 +81,10 @@ export default function ticketReducer(state = initialState, action) {
       case ADD_TICKET: {
         const newState = {
           ...state,
-          [action.newTicket.eventId]: action.newTicket
+          [action.eventId]: {
+            ...state[action.eventId],
+            userId: action.userId
+          }
         };
         return newState;
       }

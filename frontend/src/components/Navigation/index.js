@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import * as sessionActions from "../../store/session";
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
@@ -34,15 +35,16 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-      <li>
-        <NavLink exact to="/events">Events</NavLink>
-      </li>
-    </ul>
+    <nav>
+      <ul>
+        <li>
+          <NavLink exact to="/events">Events</NavLink>
+        </li>
+        <li>
+          {isLoaded && sessionLinks}
+        </li>
+      </ul>
+    </nav>
   );
 }
 
