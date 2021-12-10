@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getSingleEvent} from '../../store/event'
-import { createTicket, removeTicket } from '../../store/ticket'
+import { getTickets, createTicket, removeTicket } from '../../store/ticket'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
 
@@ -15,8 +15,43 @@ export default function SingleEvent() {
         dispatch(getSingleEvent(eventId))
     }, [dispatch, eventId])
 
+    useEffect(() => {
+        dispatch(getTickets())
+    }, [])
+
     const event = useSelector(store => store.eventReducer[eventId]);
     const sessionUser = useSelector(state => state.session.user);
+    const tickets = useSelector(store => store.ticketReducer);
+    console.log('tickets ===', tickets)
+    console.log('tickets[eventId]', tickets[eventId])
+    console.log('sessionUser.id', sessionUser.id)
+    let ticketButton;
+    if (tickets[eventId]) {
+        ticketButton = (
+            <>
+                <button
+                    className='remove-ticket-button'
+                    onClick={() => {
+                        dispatch(removeTicket(eventId))
+                    }}
+                >
+                    Remove Ticket!
+                </button>
+            </>
+        )
+    } else {
+        ticketButton = (
+            <button
+                className='get-ticket-button'
+                onClick={() => {
+                    dispatch(createTicket(sessionUser.id, eventId))
+                }}
+            >
+                Get Ticket!
+            </button>
+        )
+    }
+
 
     let sessionLinks;
     if (sessionUser && sessionUser?.id === event?.hostId) {
@@ -30,8 +65,11 @@ export default function SingleEvent() {
     return (
         <main>
             <h2>{event?.title}</h2>
-            {sessionLinks}
-            <button
+            <div>
+                {sessionLinks}
+                {ticketButton}
+            </div>
+            {/* <button
                 className='get-ticket-button'
                 onClick={() => {
                     dispatch(createTicket(sessionUser.id, eventId))
@@ -50,7 +88,7 @@ export default function SingleEvent() {
                 }}
             >
                 Remove Ticket!
-            </button>
+            </button> */}
             <div style={{border: '5px lightgray solid', width: '1000px', padding: '20px', margin: '20px', backgroundColor: 'lightgray'}}>
                 <br/>
                 <img src={event?.image} style={{height: '500px'}}></img>

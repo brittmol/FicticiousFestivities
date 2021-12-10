@@ -18,19 +18,19 @@ export default function MyTickets() {
     }, [])
 
     // if session user does not exist redirect to events list
-    // const sessionUser = useSelector(state => state.session.user);
-    // if (!sessionUser) history.push('/events')
+    const sessionUser = useSelector(state => state.session.user);
+    if (!sessionUser) history.push('/events')
 
     const tickets = useSelector(store => store.ticketReducer);
     const ticketsArr = Object.values(tickets);
 
     const events = useSelector(store => store.eventReducer);
-    const eventsArr = Object.values(events);
 
     console.log('ticketsArr =', ticketsArr)
     return (
         <main>
             <h2>All My Tickets</h2>
+            <h2>User: {sessionUser?.username}</h2>
             <ul>
             {ticketsArr?.map((ticket) => (
                 <div style={{border: '5px lightgray solid', width: '450px', padding: '20px', margin: '20px', backgroundColor: 'lightgray'}}>

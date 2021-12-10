@@ -64,6 +64,16 @@ button[type="submit"] {
   padding: 0px 10px;
 }
 
+.get-ticket-button {
+  color: white;
+  background-color: green;
+}
+
+.remove-ticket-button {
+  color: white;
+  background-color: coral;
+}
+
 .tickets-button i {
   margin-right: 8px;
 }
