@@ -69,26 +69,6 @@ export default function SingleEvent() {
                 {sessionLinks}
                 {ticketButton}
             </div>
-            {/* <button
-                className='get-ticket-button'
-                onClick={() => {
-                    dispatch(createTicket(sessionUser.id, eventId))
-                    history.push('/mytickets')
-                }}
-                // className={"like-button" + (produce.liked ? " selected" : "")}
-                // onClick={() => dispatch(toggleLike(produce.id))}
-            >
-                Get Ticket!
-            </button>
-            <button
-                className='get-ticket-button'
-                onClick={() => {
-                    dispatch(removeTicket(eventId))
-                    history.push('/mytickets')
-                }}
-            >
-                Remove Ticket!
-            </button> */}
             <div style={{border: '5px lightgray solid', width: '1000px', padding: '20px', margin: '20px', backgroundColor: 'lightgray'}}>
                 <br/>
                 <img src={event?.image} style={{height: '500px'}}></img>
