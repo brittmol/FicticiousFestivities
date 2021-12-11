@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -11,6 +12,7 @@ import DemoUser from '../DemoUser/DemoUser';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  const [showCart, setShowCart] = useState(true);
 
   let sessionLinks;
   if (sessionUser) {
@@ -29,9 +31,7 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        {/* <NavLink to="/login">Log In</NavLink> */}
         <LoginFormModal />
-        {/* <NavLink to="/signup">Sign Up</NavLink> */}
         <SignupFormModal />
         <DemoUser />
       </>

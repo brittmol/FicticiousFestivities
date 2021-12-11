@@ -40,6 +40,10 @@ main {
   transition: all 0.2s linear;
   padding: 16px;
   background-image: url("https://source.unsplash.com/1vzLW-ihJaM/1920x1080");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 button {

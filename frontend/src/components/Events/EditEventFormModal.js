@@ -11,7 +11,10 @@ function EditEventFormModal({user, event}) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit Event</button>
+      <button className="tickets-button" onClick={() => setShowModal(true)}>
+        <i className="fas fa-edit" />
+        Edit Event
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditEventForm user={user} event={event} onClose={onCloseModal}/>

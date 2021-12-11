@@ -1,4 +1,4 @@
-nav {
+/* nav {
   color: coral;
   display: flex;
   justify-content: space-between;
@@ -15,4 +15,63 @@ nav {
   left: 0;
   bottom: 0;
   top: 0;
+} */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  right: -250px;
+  transition: all 0.2s linear;
+  background-color: rgb(36, 36, 36);
+  box-shadow: 0px 0 8px 1px lightgray;
+}
+
+/* main {
+  margin-top: 54px;
+  transition: all 0.2s linear;
+  padding: 16px;
+} */
+
+nav {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  box-shadow: 3px -1px 3px 3px lightgray;
+}
+
+nav, .sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  height: 54px;
+  background-color: rgb(36, 36, 36);
+}
+
+.logout-button {
+  color: white;
+  background-color: coral;
+}
+
+.checkout-button, .arrow-button {
+  color: coral;
+  background-color: white;
+}
+
+.arrow-button i,
+.checkout-button i {
+  margin-right: 8px;
+}
+
+.profile-dropdown {
+  padding: 20px;
+}
+
+.profile-dropdown li {
+  padding: 5px 0px;
+  color: white;
 }
