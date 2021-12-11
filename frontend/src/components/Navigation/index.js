@@ -6,6 +6,9 @@ import * as sessionActions from "../../store/session";
 import ProfileButton from './ProfileButton';
 import CreateEventFormModal from '../Events/CreateEventFormModal';
 import LoggedOut from './LoggedOut';
+import SignupFormModal from '../SignupFormModal';
+import LoginFormModal from '../LoginFormModal';
+import DemoUser from '../DemoUser/DemoUser';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -28,6 +31,8 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
+        <SignupFormModal />
+        <LoginFormModal />
         <LoggedOut />
       </>
     );

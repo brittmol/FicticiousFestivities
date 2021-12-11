@@ -59,15 +59,19 @@ button:focus {
 }
 
 button,
-.tickets-button,
 button[type="submit"] {
-  color: coral;
+  color: white;
+  background-color: coral;
   height: 32px;
-  background-color: white;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   min-width: 32px;
   padding: 0px 10px;
+}
+
+.tickets-button {
+  color: coral;
+  background-color: white;
 }
 
 .get-ticket-button {
@@ -75,9 +79,8 @@ button[type="submit"] {
   background-color: green;
 }
 
-.remove-ticket-button {
-  color: white;
-  background-color: coral;
+button[type="submit"] {
+  margin: 20px 0;
 }
 
 i {

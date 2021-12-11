@@ -42,8 +42,8 @@ export default function SingleEvent() {
                         dispatch(removeTicket(eventId))
                     }}
                 >
-                    <i className="fas fa-ticket-alt" />
-                    Remove Ticket!
+                    <i className="fas fa-trash-alt" />
+                    Remove Ticket
                 </button>
             </>
         )

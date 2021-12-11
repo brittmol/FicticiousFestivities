@@ -42,13 +42,14 @@ export default function MyTickets() {
                             </div>
                             <button
                                 className='remove-ticket-button'
+                                style={{marginTop:'15px'}}
                                 onClick={() => {
                                     dispatch(removeTicket(ticket?.eventId))
                                     history.push('/mytickets')
                                 }}
                             >
-                                <i className="fas fa-ticket-alt" />
-                                Remove Ticket!
+                                <i className="fas fa-trash-alt" />
+                                Remove Ticket
                             </button>
                         </div>
                     </Link>

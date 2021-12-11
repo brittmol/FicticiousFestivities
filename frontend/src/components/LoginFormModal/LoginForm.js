@@ -42,7 +42,10 @@ function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
-      <button type="submit">Log In</button>
+      <button type="submit">
+        <i className="fas fa-sign-in-alt"></i>
+        Log In
+      </button>
     </form>
   );
 }
