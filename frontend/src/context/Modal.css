@@ -20,13 +20,13 @@
 
 #modal-content {
   position: absolute;
-  background-color: white;
+  /* background-color: blueviolet; */
   padding: 50px;
   border-radius: 70px;
 }
 
 form {
-  background-color: lightgreen;
+  /* background-color: lightgreen; */
   padding: 20px;
   display: flex;
   flex-direction: column;

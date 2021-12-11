@@ -42,7 +42,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
   min-height: 100vh;
-
 }
 
 main {
@@ -88,4 +87,3 @@ i {
 h2 {
   color: coral;
 }
-

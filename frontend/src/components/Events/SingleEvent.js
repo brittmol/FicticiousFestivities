@@ -31,9 +31,10 @@ export default function SingleEvent() {
             <>
                 <button
                     className='get-ticket-button'
+                    style={{marginRight: '10px'}}
                 >
                     <i className="fas fa-ticket-alt" />
-                    <i className="fas fa-user-check" />
+                    <i className="fas fa-user-check" style={{margin: '0'}}/>
                 </button>
                 <button
                     className='remove-ticket-button'
@@ -72,20 +73,30 @@ export default function SingleEvent() {
 
     return (
         <main>
-            <h2>{event?.title}</h2>
-            <div>
-                {sessionLinks}
-                {ticketButton}
-            </div>
-            <div className='event-card-single'>
-                <br/>
-                <img src={event?.image} style={{height: '500px'}}></img>
-                <br/>
-                <p>Location: {event?.location}</p>
-                <p>When: {event?.datetime}</p>
-                <p>About: {event?.summary}</p>
-                <p>Hosted by: {event?.hostId}</p>
-            </div>
+            <section className='single-card'>
+                <div className='event-card-single'>
+                    <div className='single-card-buttons'>
+                        <div>
+                            {sessionLinks}
+                        </div>
+                        <div>
+                            {ticketButton}
+                        </div>
+                    </div>
+                    <div className='card_title'>
+                        <h2>{event?.title}</h2>
+                    </div>
+                    <div className='card_img-container'>
+                        <img src={event?.image} style={{height: '500px'}}></img>
+                    </div>
+                    <div className='card_content'>
+                        <p>Location: {event?.location}</p>
+                        <p>When: {event?.datetime}</p>
+                        <p>About: {event?.summary}</p>
+                        <p>Hosted by: {event?.hostId}</p>
+                    </div>
+                </div>
+            </section>
         </main>
     )
 }
