@@ -21,18 +21,18 @@ nav {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 300px;
-  left: -300px;
+  width: 250px;
+  right: -250px;
   transition: all 0.2s linear;
-  background-color: whitesmoke;
+  background-color: rgb(36, 36, 36);
   box-shadow: 0px 0 8px 1px lightgray;
 }
 
-main {
+/* main {
   margin-top: 54px;
   transition: all 0.2s linear;
   padding: 16px;
-}
+} */
 
 nav {
   position: fixed;
@@ -40,6 +40,7 @@ nav {
   left: 0;
   bottom: 0;
   top: 0;
+  box-shadow: 3px -1px 3px 3px lightgray;
 }
 
 nav, .sidebar-header {
@@ -48,19 +49,29 @@ nav, .sidebar-header {
   align-items: center;
   padding: 0 16px;
   height: 54px;
-  background-color: pink;
-  box-shadow: 3px -1px 3px 3px lightgray;
+  background-color: rgb(36, 36, 36);
 }
 
-.checkout-button, .arrow-button, button[type="submit"] {
+.logout-button {
   color: white;
-  height: 32px;
   background-color: coral;
-  border: 0;
-  border-radius: 8px;
-  min-width: 32px;
 }
 
+.checkout-button, .arrow-button {
+  color: coral;
+  background-color: white;
+}
+
+.arrow-button i,
 .checkout-button i {
   margin-right: 8px;
+}
+
+.profile-dropdown {
+  padding: 20px;
+}
+
+.profile-dropdown li {
+  padding: 5px 0px;
+  color: white;
 }

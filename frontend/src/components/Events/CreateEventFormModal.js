@@ -12,7 +12,7 @@ function CreateEventFormModal({user}) {
   return (
     <>
       <button className="tickets-button" onClick={() => setShowModal(true)}>
-        <i className="fas fa-calendar-alt" />
+        <i className="fas fa-plus-circle" />
         Create New Event
       </button>
       {showModal && (
