@@ -22,9 +22,7 @@ export default function SingleEvent() {
     const event = useSelector(store => store.eventReducer[eventId]);
     const sessionUser = useSelector(state => state.session.user);
     const tickets = useSelector(store => store.ticketReducer);
-    console.log('tickets ===', tickets)
-    console.log('tickets[eventId]', tickets[eventId])
-    console.log('sessionUser.id', sessionUser.id)
+
     let ticketButton;
     if (tickets[eventId]) {
         ticketButton = (
