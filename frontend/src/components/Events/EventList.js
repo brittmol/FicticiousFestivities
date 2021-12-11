@@ -33,7 +33,7 @@ export default function EventList() {
                 <h2>All Events</h2>
             <ul>
                 {eventsArr?.map((event) => (
-                    <div style={{border: '5px lightgray solid', width: '450px', padding: '20px', margin: '20px', backgroundColor: 'lightgray'}}>
+                    <div className='event-card'>
 
                         <li>
                             {event.title}

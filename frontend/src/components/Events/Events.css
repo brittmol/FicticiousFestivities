@@ -47,3 +47,19 @@
 .card_content {
   padding: 20px;
 } */
+
+.event-card,
+.event-card-single {
+  border: 5px lightgray solid;
+  padding: 20px;
+  margin: 20px;
+  background-color: lightgray;
+}
+
+.event-card {
+  width: 450px;
+}
+
+.event-card-single {
+  width: 1000px;
+}

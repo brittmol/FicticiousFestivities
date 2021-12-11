@@ -4,6 +4,7 @@ import { getEvents } from '../../store/event'
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import '../Events/Events.css'
 
 export default function MyTickets() {
     const dispatch = useDispatch()
@@ -17,9 +18,7 @@ export default function MyTickets() {
         dispatch(getEvents())
     }, [])
 
-    // if session user does not exist redirect to events list
     const sessionUser = useSelector(state => state.session.user);
-    if (!sessionUser) history.push('/events')
 
     const tickets = useSelector(store => store.ticketReducer);
     const ticketsArr = Object.values(tickets);
@@ -33,7 +32,7 @@ export default function MyTickets() {
             <h2>User: {sessionUser?.username}</h2>
             <ul>
             {ticketsArr?.map((ticket) => (
-                <div style={{border: '5px lightgray solid', width: '450px', padding: '20px', margin: '20px', backgroundColor: 'lightgray'}}>
+                <div className='event-card'>
                     <li>
                         userId = {ticket?.userId}
                     </li>
