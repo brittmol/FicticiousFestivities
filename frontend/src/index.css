@@ -8,6 +8,7 @@
 
 html {
   font-family: sans-serif;
+  text-decoration: none;
 }
 
 html,
@@ -87,3 +88,4 @@ i {
 h2 {
   color: coral;
 }
+
