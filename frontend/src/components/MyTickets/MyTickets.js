@@ -50,7 +50,7 @@ export default function MyTickets() {
                     </li>
                     <li>
                     <button
-                        className='get-ticket-button'
+                        className='remove-ticket-button'
                         onClick={() => {
                             dispatch(removeTicket(ticket?.eventId))
                             history.push('/mytickets')
