@@ -15,8 +15,8 @@ export default function EventList() {
     const eventsArr = Object.values(events);
 
     return (
-        <main style={{marginTop: '120px'}}>
-            <h2 className='page-title'>All Events!!!</h2>
+        <main style={{marginTop: '150px'}}>
+            <h2 className='page-title'>All Events</h2>
             <section className='cards'>
                 {eventsArr?.map((event) => (
                     <Link to={`/events/${event.id}`} style={{ textDecoration: 'none' }}>

@@ -27,7 +27,7 @@ export default function MyTickets() {
 
     console.log('ticketsArr =', ticketsArr)
     return (
-        <main style={{marginTop: '120px'}}>
+        <main style={{marginTop: '150px'}}>
             <h2 className='page-title'>All My Tickets</h2>
             {/* <h2>User: {sessionUser?.username}</h2> */}
             <section className='cards'>

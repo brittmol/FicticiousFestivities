@@ -95,9 +95,14 @@
   bottom: 0;
   top: 0;
   box-shadow: 3px -1px 3px 3px lightgray;
-  margin-top: 55px;
+  margin-top: 58px;
   padding: 15px;
-  height: 60px;
-  /* background-color: rgba(36, 36, 36, 0.658); */
-  background-color: black;
+  height: 80px;
+  background-color: rgba(36, 36, 36);
+  /* background-color: black; */
+  margin-left: 450px;
+  margin-right: 450px;
+  border-radius: 10px;
+  font-size: 40px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
