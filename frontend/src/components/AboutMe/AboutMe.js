@@ -15,7 +15,7 @@ export default function AboutMe() {
                     </div>
                     <div className='card_content' style={{paddingTop: '0px'}}>
                         <p style={{lineHeight: '25px', width: '800px'}}>
-                        Hi! My name is Brittany and I’m from Miami, Florida! I attended college at Penn State University and furthered my education at Thomas Jefferson University with a Masters in Medical Sciences. I later found a passion for programming, and have been pursing it ever since. I have loved exploring React and Redux frameworks for this website and learned a lot along the way. Enjoy our Board Game Website! =D
+                        Hi! My name is Brittany and I’m from Miami, Florida! I attended college at Penn State University and furthered my education at Thomas Jefferson University with a Masters in Medical Sciences. I later found a passion for programming, and have been pursing it ever since. I have loved exploring React and Redux frameworks for this website and learned a lot along the way. Enjoy My Ficticious Festivities Website! =D
                         </p>
                     </div>
                     <div>
