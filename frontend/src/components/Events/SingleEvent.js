@@ -35,6 +35,7 @@ export default function SingleEvent() {
                         dispatch(removeTicket(eventId))
                     }}
                 >
+                    <i className="fas fa-ticket-alt" />
                     Remove Ticket!
                 </button>
             </>
@@ -47,6 +48,7 @@ export default function SingleEvent() {
                     dispatch(createTicket(sessionUser.id, eventId))
                 }}
             >
+                <i className="fas fa-ticket-alt" />
                 Get Ticket!
             </button>
         )

@@ -17,10 +17,12 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
         <CreateEventFormModal user={sessionUser}/>
-        <button className="tickets-button">
-          <i className="fas fa-ticket-alt" />
-          <NavLink exact to="/mytickets">MyTickets</NavLink>
-        </button>
+        <NavLink exact to="/mytickets">
+          <button className="tickets-button">
+            <i className="fas fa-ticket-alt" />
+            MyTickets
+          </button>
+        </NavLink>
         <ProfileButton user={sessionUser} />
       </>
     );
@@ -38,10 +40,12 @@ function Navigation({ isLoaded }){
 
   return (
     <nav>
-      <button className="tickets-button">
-        <i className="fas fa-calendar-alt" />
-        <NavLink exact to="/events">All Events</NavLink>
-      </button>
+      <NavLink exact to="/events">
+        <button className="tickets-button">
+          <i className="fas fa-calendar-alt" />
+          All Events
+        </button>
+      </NavLink>
       {isLoaded && sessionLinks}
     </nav>
   );

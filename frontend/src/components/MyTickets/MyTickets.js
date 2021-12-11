@@ -56,6 +56,7 @@ export default function MyTickets() {
                             history.push('/mytickets')
                         }}
                     >
+                        <i className="fas fa-ticket-alt" />
                         Remove Ticket!
                     </button>
                     </li>
