@@ -43,7 +43,8 @@ nav {
   box-shadow: 3px -1px 3px 3px lightgray;
 }
 
-nav, .sidebar-header {
+nav,
+.sidebar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -61,7 +62,8 @@ nav, .sidebar-header {
   background-color: coral;
 }
 
-.checkout-button, .arrow-button {
+.checkout-button,
+.arrow-button {
   color: coral;
   background-color: white;
 }

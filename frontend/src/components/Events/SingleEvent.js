@@ -93,7 +93,7 @@ export default function SingleEvent() {
                         <p>Location: {event?.location}</p>
                         <p>When: {event?.datetime}</p>
                         <p>About: {event?.summary}</p>
-                        <p>Hosted by: {event?.hostId}</p>
+                        {/* <p>Hosted by: {event?.hostId}</p> */}
                     </div>
                 </div>
             </section>

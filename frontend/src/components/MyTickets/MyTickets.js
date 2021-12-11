@@ -27,9 +27,9 @@ export default function MyTickets() {
 
     console.log('ticketsArr =', ticketsArr)
     return (
-        <main>
-            <h2>All My Tickets</h2>
-            <h2>User: {sessionUser?.username}</h2>
+        <main style={{marginTop: '120px'}}>
+            <h2 className='page-title'>All My Tickets</h2>
+            {/* <h2>User: {sessionUser?.username}</h2> */}
             <section className='cards'>
                 {ticketsArr?.map((ticket) => (
                     <Link to={`/events/${ticket?.eventId}`} style={{ textDecoration: 'none' }}>

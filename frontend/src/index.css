@@ -67,6 +67,7 @@ button[type="submit"] {
   border-radius: 10px;
   min-width: 32px;
   padding: 0px 10px;
+  font-weight: bold;
 }
 
 .tickets-button {
