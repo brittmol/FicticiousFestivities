@@ -57,7 +57,10 @@ function SignupFormPage() {
         onChange={(e) => setConfirmPassword(e.target.value)}
         required
       />
-      <button type="submit">Sign Up</button>
+      <button type="submit">
+        <i className="fas fa-sign-in-alt"></i>
+        Sign Up
+      </button>
     </form>
   );
 }

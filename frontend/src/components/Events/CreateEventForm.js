@@ -68,7 +68,10 @@ const CreateEventForm = ({user, onClose}) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
             />
-            <button type="submit">Create New Event</button>
+            <button type="submit">
+                <i className="fas fa-plus-circle" />
+                Create New Event
+            </button>
         </form>
     )
 

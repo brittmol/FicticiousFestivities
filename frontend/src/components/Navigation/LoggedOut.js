@@ -44,14 +44,14 @@ function LoggedOut() {
           </div>
           <ul className="profile-dropdown">
             <li>
+                <DemoUser />
+            </li>
+            {/* <li>
                 <SignupFormModal />
             </li>
             <li>
                 <LoginFormModal />
-            </li>
-            <li>
-                <DemoUser />
-            </li>
+            </li> */}
           </ul>
         </div>
 

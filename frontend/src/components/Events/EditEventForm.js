@@ -69,12 +69,16 @@ const EditEventForm = ({event, onClose}) => {
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
             />
-            <button type="submit">Edit Event</button>
+            <button type="submit">
+                <i className="fas fa-edit" />
+                Edit Event
+            </button>
             <button onClick={() => {
                 dispatch(removeEvent(event))
                 history.push(`/events`)
             }}
             >
+                <i className="fas fa-trash-alt" />
                 Delete Event
             </button>
         </form>

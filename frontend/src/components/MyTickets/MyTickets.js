@@ -30,38 +30,31 @@ export default function MyTickets() {
         <main>
             <h2>All My Tickets</h2>
             <h2>User: {sessionUser?.username}</h2>
-            <ul>
-            {ticketsArr?.map((ticket) => (
-                <div className='event-card'>
-                    <li>
-                        userId = {ticket?.userId}
-                    </li>
-                    <li>
-                        eventId = {ticket?.eventId}
-                    </li>
-                    <li>
-                        {events[ticket?.eventId]?.title}
-                    </li>
-                    <li>
-                        <Link to={`/events/${ticket?.eventId}`}>
-                            <img src={events[ticket?.eventId]?.image} style={{height: '200px'}}></img>
-                        </Link>
-                    </li>
-                    <li>
-                    <button
-                        className='remove-ticket-button'
-                        onClick={() => {
-                            dispatch(removeTicket(ticket?.eventId))
-                            history.push('/mytickets')
-                        }}
-                    >
-                        <i className="fas fa-ticket-alt" />
-                        Remove Ticket!
-                    </button>
-                    </li>
-                </div>
+            <section className='cards'>
+                {ticketsArr?.map((ticket) => (
+                    <Link to={`/events/${ticket?.eventId}`} style={{ textDecoration: 'none' }}>
+                        <div className='event-card'>
+                            <div className='card_title'>
+                                {events[ticket?.eventId]?.title}
+                            </div>
+                            <div className='card_img-container'>
+                                <img src={events[ticket?.eventId]?.image} style={{height: '200px'}}></img>
+                            </div>
+                            <button
+                                className='remove-ticket-button'
+                                style={{marginTop:'15px'}}
+                                onClick={() => {
+                                    dispatch(removeTicket(ticket?.eventId))
+                                    history.push('/mytickets')
+                                }}
+                            >
+                                <i className="fas fa-trash-alt" />
+                                Remove Ticket
+                            </button>
+                        </div>
+                    </Link>
                 ))}
-            </ul>
+            </section>
         </main>
     )
 }

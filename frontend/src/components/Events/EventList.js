@@ -16,35 +16,21 @@ export default function EventList() {
 
     return (
         <main>
-            {/* <section className='cards'>
+            <h2>All Events!!!</h2>
+            <section className='cards'>
                 {eventsArr?.map((event) => (
-                    <div className='card'>
-                    <div className='card_content'>
-                    {event.title}
-                    </div>
-                    <div className='card_img-container'>
-                    <Link to={`/events/${event.id}`}>
-                    <img src={event.image} style={{height: '200px'}}></img>
-                    </Link>
-                    </div>
-                    </div>
-                    ))}
-                </section> */}
-                <h2>All Events</h2>
-            <ul>
-                {eventsArr?.map((event) => (
-                    <div className='event-card'>
-
-                        <li>
-                            {event.title}
-                            <br/>
-                            <Link to={`/events/${event.id}`}>
+                    <Link to={`/events/${event.id}`} style={{ textDecoration: 'none' }}>
+                        <div className='event-card'>
+                            <div className='card_title'>
+                                {event.title}
+                            </div>
+                            <div className='card_img-container'>
                                 <img src={event.image} style={{height: '200px'}}></img>
-                            </Link>
-                        </li>
-                    </div>
+                            </div>
+                        </div>
+                    </Link>
                 ))}
-            </ul>
+            </section>
         </main>
     )
 }
