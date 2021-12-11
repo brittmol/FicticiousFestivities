@@ -30,6 +30,12 @@ export default function SingleEvent() {
         ticketButton = (
             <>
                 <button
+                    className='get-ticket-button'
+                >
+                    <i className="fas fa-ticket-alt" />
+                    <i className="fas fa-user-check" />
+                </button>
+                <button
                     className='remove-ticket-button'
                     onClick={() => {
                         dispatch(removeTicket(eventId))
