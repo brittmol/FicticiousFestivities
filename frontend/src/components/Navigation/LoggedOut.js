@@ -46,12 +46,12 @@ function LoggedOut() {
             <li>
                 <DemoUser />
             </li>
-            {/* <li>
+            <li>
                 <SignupFormModal />
             </li>
             <li>
                 <LoginFormModal />
-            </li> */}
+            </li>
           </ul>
         </div>
 

@@ -43,30 +43,35 @@ const CreateEventForm = ({user, onClose}) => {
                 placeholder='Event Title'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                required
             />
             <input
                 type='text'
                 placeholder='Location'
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
+                required
             />
             <input
                 type='datetime-local'
                 placeholder='Date and Time'
                 value={datetime}
                 onChange={(e) => setDatetime(e.target.value)}
+                required
             />
             <input
                 type='text'
                 placeholder='Description...'
                 value={summary}
                 onChange={(e) => setSummary(e.target.value)}
+                required
             />
             <input
                 type='text'
                 placeholder='Image URL'
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
+                required
             />
             <button type="submit">
                 <i className="fas fa-plus-circle" />

@@ -8,7 +8,6 @@ import CreateEventFormModal from '../Events/CreateEventFormModal';
 import LoggedOut from './LoggedOut';
 import SignupFormModal from '../SignupFormModal';
 import LoginFormModal from '../LoginFormModal';
-import DemoUser from '../DemoUser/DemoUser';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -44,6 +43,12 @@ function Navigation({ isLoaded }){
         <button className="tickets-button">
           <i className="fas fa-calendar-alt" />
           All Events
+        </button>
+      </NavLink>
+      <NavLink exact to="/aboutme">
+        <button className="tickets-button">
+          <i className="fas fa-smile" />
+          About Me
         </button>
       </NavLink>
       {isLoaded && sessionLinks}

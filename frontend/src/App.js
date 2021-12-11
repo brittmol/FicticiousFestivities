@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import EventList from "./components/Events/EventList"
 import SingleEvent from "./components/Events/SingleEvent";
 import MyTickets from "./components/MyTickets/MyTickets";
+import AboutMe from "./components/AboutMe/AboutMe";
 import SplashPage from "./components/SplashPage/SplashPage";
 
 function App() {
@@ -33,6 +34,10 @@ function App() {
           <Route path='/mytickets'>
             <Navigation isLoaded={isLoaded} />
             <MyTickets />
+          </Route>
+          <Route path='/aboutme'>
+            <Navigation isLoaded={isLoaded} />
+            <AboutMe />
           </Route>
         </Switch>
     </>
