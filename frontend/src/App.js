@@ -20,6 +20,7 @@ function App() {
     <>
         <Switch>
           <Route exact path='/'>
+            <Navigation isLoaded={isLoaded} />
             <SplashPage />
           </Route>
           <Route exact path='/events'>
