@@ -35,15 +35,19 @@ ul {
   list-style: none;
 }
 
-main {
-  margin-top: 54px;
-  transition: all 0.2s linear;
-  padding: 16px;
+body {
   background-image: url("https://source.unsplash.com/1vzLW-ihJaM/1920x1080");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   min-height: 100vh;
+
+}
+
+main {
+  margin-top: 54px;
+  transition: all 0.2s linear;
+  padding: 16px;
 }
 
 button {
@@ -76,9 +80,7 @@ button[type="submit"] {
   background-color: coral;
 }
 
-.tickets-button i,
-.get-ticket-button i,
-.remove-ticket-button i {
+i {
   margin-right: 8px;
 }
 

@@ -12,6 +12,11 @@ const DemoUser = () => {
       })
     );
   };
-  return <button onClick={demoLogin}>Demo User</button>;
+  return (
+    <button className="profile-buttons" onClick={demoLogin}>
+      <i className="fas fa-user-circle"></i>
+      Demo User
+    </button>
+  )
 };
 export default DemoUser;
