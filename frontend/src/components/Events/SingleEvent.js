@@ -4,7 +4,7 @@ import { getSingleEvent} from '../../store/event'
 import { getTickets, createTicket, removeTicket } from '../../store/ticket'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
-
+import './Events.css'
 
 export default function SingleEvent() {
     const { eventId } = useParams();
@@ -77,7 +77,7 @@ export default function SingleEvent() {
                 {sessionLinks}
                 {ticketButton}
             </div>
-            <div style={{border: '5px lightgray solid', width: '1000px', padding: '20px', margin: '20px', backgroundColor: 'lightgray'}}>
+            <div className='event-card-single'>
                 <br/>
                 <img src={event?.image} style={{height: '500px'}}></img>
                 <br/>
