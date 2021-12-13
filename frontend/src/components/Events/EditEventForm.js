@@ -32,18 +32,18 @@ const EditEventForm = ({event, onClose}) => {
 
         setErrors([])
         dispatch(updateEvent(payload))
-            .then(event => history.push(`events/${event.id}`))
-            .then(event => onClose())
+            // .then(event => history.push(`events/${event.id}`))
+            // .then(event => onClose())
             .catch(async(res) => {
                 const data = await res.json()
                 if(data && data.errors) return setErrors(data.errors)
             })
 
-        // let updatedEvent = await dispatch(updateEvent(payload))
-        // if (updatedEvent) {
-        //     onClose()
-        //     history.push(`/events/${event.id}`);
-        // }
+        let updatedEvent = await dispatch(updateEvent(payload))
+        if (updatedEvent) {
+            onClose()
+            history.push(`/events/${event.id}`);
+        }
     };
 
     return (
