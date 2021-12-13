@@ -15,6 +15,7 @@ const EditEventForm = ({event, onClose}) => {
     const [datetime, setDatetime] = useState(event?.datetime || "")
     const [summary, setSummary] = useState(event?.summary || "")
     const [image, setImage] = useState(event?.image || "")
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,29 +30,41 @@ const EditEventForm = ({event, onClose}) => {
             hostId: user.id,
         };
 
-        let updatedEvent = await dispatch(updateEvent(payload))
-        if (updatedEvent) {
-            onClose()
-            history.push(`/events/${event.id}`);
-        }
+        setErrors([])
+        dispatch(updateEvent(payload))
+            .then(event => history.push(`events/${event.id}`))
+            .then(event => onClose())
+            .catch(async(res) => {
+                const data = await res.json()
+                if(data && data.errors) return setErrors(data.errors)
+            })
+
+        // let updatedEvent = await dispatch(updateEvent(payload))
+        // if (updatedEvent) {
+        //     onClose()
+        //     history.push(`/events/${event.id}`);
+        // }
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <h2>Edit Event</h2>
+            <ul style={{color: 'white'}}>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
             <input
                 type='text'
                 placeholder='Event Title'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                required
+                // required
             />
             <input
                 type='text'
                 placeholder='Location'
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                required
+                // required
             />
             <input
                 type='datetime-local'
@@ -65,14 +78,14 @@ const EditEventForm = ({event, onClose}) => {
                 placeholder='Description...'
                 value={summary}
                 onChange={(e) => setSummary(e.target.value)}
-                required
+                // required
             />
             <input
                 type='text'
                 placeholder='Image URL'
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-                required
+                // required
             />
             <button type="submit">
                 <i className="fas fa-edit" />
