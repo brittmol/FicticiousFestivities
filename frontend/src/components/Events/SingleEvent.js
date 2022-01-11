@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getSingleEvent} from '../../store/event'
-import { getComments } from '../../store/comment'
 import { getTickets, createTicket, removeTicket } from '../../store/ticket'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
+import LoadComments from '../Comments/LoadComments';
 import './Events.css'
 
 export default function SingleEvent() {
@@ -17,31 +17,12 @@ export default function SingleEvent() {
     }, [dispatch, eventId])
 
     useEffect(() => {
-        dispatch(getComments(eventId))
-    }, [dispatch, eventId])
-
-    useEffect(() => {
         dispatch(getTickets())
     }, [])
 
     const event = useSelector(store => store.eventReducer[eventId]);
     const sessionUser = useSelector(state => state.session.user);
     const tickets = useSelector(store => store.ticketReducer);
-    const comments = useSelector(store => store.commentReducer);
-    const commentsArr = Object.values(comments)
-    // commentsArr sorting
-    commentsArr.sort(function(a,b) {
-        // console.log(a.createdAt < b.createdAt)
-        return -1;
-    })
-
-    console.log('commentsArr = ', commentsArr)
-
-    let editCommentButton = (
-        <button className="tickets-button">
-            <i className="fas fa-edit" />
-        </button>
-    )
 
     let ticketButton;
     if (tickets[eventId] && sessionUser?.id === tickets[eventId]?.userId) {
@@ -115,20 +96,7 @@ export default function SingleEvent() {
                         <p>About: {event?.summary}</p>
                         {/* <p>Hosted by: {event?.hostId}</p> */}
                     </div>
-                    <div className='comments'>
-                        <h2>Comments</h2>
-                        <h3></h3>
-                        {commentsArr?.map((comment) => (
-                            <div className='single_comment'>
-                                <p>User: {comment?.userId}</p>
-                                <p>{comment?.comment}</p>
-                                <p>
-                                    {comment && sessionUser?.id === comment?.userId ? editCommentButton : null}
-                                </p>
-                                <br></br>
-                            </div>
-                        ))}
-                    </div>
+                    <LoadComments user={sessionUser} eventId={eventId}/>
                 </div>
             </section>
         </main>
