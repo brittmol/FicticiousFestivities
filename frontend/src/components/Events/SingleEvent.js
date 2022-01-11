@@ -29,8 +29,8 @@ export default function SingleEvent() {
     const tickets = useSelector(store => store.ticketReducer);
     const comments = useSelector(store => store.commentReducer);
     const commentsArr = Object.values(comments)
+    // commentsArr sorting
 
-    console.log('comments = ', comments)
     console.log('commentsArr = ', commentsArr)
 
     let editCommentButton = (
