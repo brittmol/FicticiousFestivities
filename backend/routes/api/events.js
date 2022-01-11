@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Event, Ticket } = require('../../db/models');
+const { User, Event, Ticket, Comment } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -56,6 +56,43 @@ router.delete('/:id', requireAuth, asyncHandler(async(req, res) => {
   await event.destroy();
   return res.json({})
 }))
+
+
+// ---------- Comments -----------
+
+// const validateComment = [
+//   check('comment')
+//     .exists({ checkFalsy: true })
+//     .withMessage('Please provide a comment.'),
+//   handleValidationErrors
+// ]
+
+router.get('/:id/comments', requireAuth, asyncHandler(async(req, res) => {
+  const comments = await Comment.findAll({
+    where: { eventId: req.params.id }
+  })
+  console.log(comments)
+  return res.json(comments)
+}))
+
+// router.post('/:id/comments/:commentId', requireAuth, validateComment, asyncHandler(async(req, res) => {
+//   const comment = await Comment.create(req.body)
+//   return res.json(comment)
+// }))
+
+// router.put('/:id/comments/:commentId', requireAuth, validateComment, asyncHandler(async(req, res) => {
+//   const comment = await Comment.findByPk(req.params.commentId)
+//   const updatedComment = await comment.update(req.body)
+//   return res.json(updatedComment)
+// }))
+
+// router.delete('/:id/comments/:commentId', requireAuth, asyncHandler(async(req, res) => {
+//   const comment = await Comment.findByPk(req.params.commentId)
+//   if (!comment) throw new Error('Cannot find comment');
+//   await comment.destroy();
+//   return res.json({})
+// }))
+
 
 
 module.exports = router;

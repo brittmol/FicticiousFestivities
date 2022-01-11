@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { getSingleEvent} from '../../store/event'
+import { getComments } from '../../store/comment'
 import { getTickets, createTicket, removeTicket } from '../../store/ticket'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
@@ -16,12 +17,22 @@ export default function SingleEvent() {
     }, [dispatch, eventId])
 
     useEffect(() => {
+        dispatch(getComments(eventId))
+    }, [dispatch, eventId])
+
+    useEffect(() => {
         dispatch(getTickets())
     }, [])
 
     const event = useSelector(store => store.eventReducer[eventId]);
     const sessionUser = useSelector(state => state.session.user);
     const tickets = useSelector(store => store.ticketReducer);
+    const comments = useSelector(store => store.commentReducer);
+    const commentsArr = Object.values(comments)
+
+    // console.log('event = ', event)
+    // console.log('comments = ', comments)
+    // console.log('tickets = ', tickets)
     // console.log('tickets[eventId]', tickets[eventId]?.userId)
     // console.log('sessionUser', sessionUser?.id)
     // console.log(sessionUser.id === tickets[eventId]?.userId)
@@ -94,6 +105,15 @@ export default function SingleEvent() {
                         <p>When: {event?.datetime}</p>
                         <p>About: {event?.summary}</p>
                         {/* <p>Hosted by: {event?.hostId}</p> */}
+                    </div>
+                    <div>
+                        {commentsArr?.map((comment) => (
+                            <div>
+                                User: {comment.userId}
+                                <br></br>
+                                {comment.comment}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
