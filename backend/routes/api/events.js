@@ -67,10 +67,10 @@ router.delete('/:id', requireAuth, asyncHandler(async(req, res) => {
 //   handleValidationErrors
 // ]
 
-router.get('/:id/comments', requireAuth, asyncHandler(async(req, res) => {
+router.get('/:id/comments', asyncHandler(async(req, res) => {
   const comments = await Comment.findAll({
     where: { eventId: req.params.id },
-    order: [['createdAt', 'DESC']],
+    // order: [['createdAt', 'DESC']],
   })
   return res.json(comments)
 }))

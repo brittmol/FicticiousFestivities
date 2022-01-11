@@ -30,6 +30,10 @@ export default function SingleEvent() {
     const comments = useSelector(store => store.commentReducer);
     const commentsArr = Object.values(comments)
     // commentsArr sorting
+    commentsArr.sort(function(a,b) {
+        // console.log(a.createdAt < b.createdAt)
+        return -1;
+    })
 
     console.log('commentsArr = ', commentsArr)
 
@@ -73,6 +77,8 @@ export default function SingleEvent() {
                 Get Ticket!
             </button>
         )
+    } else {
+        ticketButton = null;
     }
 
 
