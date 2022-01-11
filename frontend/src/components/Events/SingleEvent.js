@@ -33,19 +33,11 @@ export default function SingleEvent() {
     console.log('comments = ', comments)
     console.log('commentsArr = ', commentsArr)
 
-    let editCommentButton;
-    commentsArr.forEach(comment => {
-        console.log('is it session user', comment.comment, sessionUser?.id === comment?.userId)
-        if(comment && sessionUser?.id === comment?.userId) {
-            editCommentButton = (
-                <>
-                    <button className="tickets-button">
-                        <i className="fas fa-edit" />
-                    </button>
-                </>
-            )
-        }
-    });
+    let editCommentButton = (
+        <button className="tickets-button">
+            <i className="fas fa-edit" />
+        </button>
+    )
 
     let ticketButton;
     if (tickets[eventId] && sessionUser?.id === tickets[eventId]?.userId) {
@@ -118,11 +110,15 @@ export default function SingleEvent() {
                         {/* <p>Hosted by: {event?.hostId}</p> */}
                     </div>
                     <div className='comments'>
+                        <h2>Comments</h2>
+                        <h3></h3>
                         {commentsArr?.map((comment) => (
                             <div className='single_comment'>
                                 <p>User: {comment?.userId}</p>
                                 <p>{comment?.comment}</p>
-                                {editCommentButton}
+                                <p>
+                                    {comment && sessionUser?.id === comment?.userId ? editCommentButton : null}
+                                </p>
                                 <br></br>
                             </div>
                         ))}
