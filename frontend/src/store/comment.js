@@ -104,7 +104,7 @@ export default function commentReducer(state = initialState, action) {
       case LOAD: {
         const allComments = {};
         action.comments.forEach(comment => {
-          allComments[comment.eventId] = comment;
+          allComments[comment.id] = comment;
         });
         return allComments
       }

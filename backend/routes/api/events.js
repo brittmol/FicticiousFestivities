@@ -69,9 +69,9 @@ router.delete('/:id', requireAuth, asyncHandler(async(req, res) => {
 
 router.get('/:id/comments', requireAuth, asyncHandler(async(req, res) => {
   const comments = await Comment.findAll({
-    where: { eventId: req.params.id }
+    where: { eventId: req.params.id },
+    orderBy: [['createdAt', 'DESC']],
   })
-  console.log(comments)
   return res.json(comments)
 }))
 

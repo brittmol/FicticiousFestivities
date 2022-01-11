@@ -30,12 +30,23 @@ export default function SingleEvent() {
     const comments = useSelector(store => store.commentReducer);
     const commentsArr = Object.values(comments)
 
-    // console.log('event = ', event)
-    // console.log('comments = ', comments)
-    // console.log('tickets = ', tickets)
-    // console.log('tickets[eventId]', tickets[eventId]?.userId)
-    // console.log('sessionUser', sessionUser?.id)
-    // console.log(sessionUser.id === tickets[eventId]?.userId)
+    console.log('comments = ', comments)
+    console.log('commentsArr = ', commentsArr)
+
+    let editCommentButton;
+    commentsArr.forEach(comment => {
+        console.log('is it session user', comment.comment, sessionUser?.id === comment?.userId)
+        if(comment && sessionUser?.id === comment?.userId) {
+            editCommentButton = (
+                <>
+                    <button className="tickets-button">
+                        <i className="fas fa-edit" />
+                    </button>
+                </>
+            )
+        }
+    });
+
     let ticketButton;
     if (tickets[eventId] && sessionUser?.id === tickets[eventId]?.userId) {
         ticketButton = (
@@ -106,12 +117,13 @@ export default function SingleEvent() {
                         <p>About: {event?.summary}</p>
                         {/* <p>Hosted by: {event?.hostId}</p> */}
                     </div>
-                    <div>
+                    <div className='comments'>
                         {commentsArr?.map((comment) => (
-                            <div>
-                                User: {comment.userId}
+                            <div className='single_comment'>
+                                <p>User: {comment?.userId}</p>
+                                <p>{comment?.comment}</p>
+                                {editCommentButton}
                                 <br></br>
-                                {comment.comment}
                             </div>
                         ))}
                     </div>
