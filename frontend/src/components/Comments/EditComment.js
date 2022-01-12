@@ -6,8 +6,7 @@ import { useParams } from 'react-router';
 
 const EditCommentForm = ({comment, onClose}) => {
     const { eventId} = useParams()
-    // console.log('eventId =', eventId)
-    // console.log('commentId =', comment.id)
+    console.log('comment =', comment)
     const dispatch = useDispatch()
     const history = useHistory();
     const user = useSelector(store => store.session)
@@ -15,12 +14,14 @@ const EditCommentForm = ({comment, onClose}) => {
     const [newComment, setNewComment] = useState(comment?.comment || "")
     const [errors, setErrors] = useState([]);
 
+    console.log('newComment =', newComment)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const payload = {
-            id: newComment.id,
-            comment: newComment.comment,
+            id: comment.id,
+            comment: newComment,
             eventId,
             userId: user.id,
         };

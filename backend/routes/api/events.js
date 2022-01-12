@@ -87,7 +87,6 @@ router.put('/:id/comments/:commentId', requireAuth, validateComment, asyncHandle
 }))
 
 router.delete('/:id/comments/:commentId', requireAuth, asyncHandler(async(req, res) => {
-  console.log('DELETE req params', req.params)
   const comment = await Comment.findByPk(req.params.commentId)
   if (!comment) throw new Error('Cannot find comment');
   await comment.destroy();

@@ -70,6 +70,7 @@ export const createComment = (data) => async (dispatch) => {
 }
 
 export const updateComment = (data) => async (dispatch) => {
+  console.log('EDIT data =', data)
   const response = await csrfFetch(`/api/events/${data.eventId}/comments/${data.id}`, {
     method: 'put',
     headers: {
@@ -77,7 +78,6 @@ export const updateComment = (data) => async (dispatch) => {
     },
     body: JSON.stringify(data)
   });
-  console.log('EDIT data =', data)
 
   if (response.ok) {
     const newComment = await response.json();
@@ -87,7 +87,6 @@ export const updateComment = (data) => async (dispatch) => {
 }
 
 export const removeComment = (data) => async (dispatch) => {
-  console.log('DELETE data =', data)
   const response = await csrfFetch(`/api/events/${data.eventId}/comments/${data.id}`, {
     method: 'delete'
   });
@@ -126,7 +125,7 @@ export default function commentReducer(state = initialState, action) {
       }
       case DELETE_COMMENT: {
         const newState = { ...state };
-        console.log('action.comment.comment', action.comment.comment)
+        // console.log('DELETE action.comment', action.comment)
         delete newState[action.comment.comment.id];
         return newState;
       }
