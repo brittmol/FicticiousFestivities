@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getComments } from '../../store/comment'
 import { useEffect } from 'react';
+import EditCommentForm from './EditComment';
 
 
 const LoadComments = ({user, eventId}) => {
@@ -20,11 +21,14 @@ const LoadComments = ({user, eventId}) => {
 
     // console.log('commentsArr = ', commentsArr)
 
-    let editCommentButton = (
-        <button className="tickets-button">
-            <i className="fas fa-edit" />
-        </button>
-    )
+    let editCommentButton = (comment) => {
+        return (
+            <button className="tickets-button">
+                <i className="fas fa-edit" />
+                <EditCommentForm comment={comment} />
+            </button>
+        )
+    }
 
     return (
         <div className='comments'>
@@ -34,7 +38,7 @@ const LoadComments = ({user, eventId}) => {
                     <p>User: {comment?.userId}</p>
                     <p>{comment?.comment}</p>
                     <p>
-                        {comment && user?.id === comment?.userId ? editCommentButton : null}
+                        {comment && user?.id === comment?.userId ? editCommentButton(comment) : null}
                     </p>
                     <br></br>
                 </div>

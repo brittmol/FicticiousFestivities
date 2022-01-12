@@ -79,18 +79,18 @@ router.post('/:id/comments', requireAuth, validateComment, asyncHandler(async(re
   return res.json(comment)
 }))
 
-// router.put('/:id/comments/:commentId', requireAuth, validateComment, asyncHandler(async(req, res) => {
-//   const comment = await Comment.findByPk(req.params.commentId)
-//   const updatedComment = await comment.update(req.body)
-//   return res.json(updatedComment)
-// }))
+router.put('/:id/comments/:commentId', requireAuth, validateComment, asyncHandler(async(req, res) => {
+  const comment = await Comment.findByPk(req.params.commentId)
+  const updatedComment = await comment.update(req.body)
+  return res.json(updatedComment)
+}))
 
-// router.delete('/:id/comments/:commentId', requireAuth, asyncHandler(async(req, res) => {
-//   const comment = await Comment.findByPk(req.params.commentId)
-//   if (!comment) throw new Error('Cannot find comment');
-//   await comment.destroy();
-//   return res.json({})
-// }))
+router.delete('/:id/comments/:commentId', requireAuth, asyncHandler(async(req, res) => {
+  const comment = await Comment.findByPk(req.params.commentId)
+  if (!comment) throw new Error('Cannot find comment');
+  await comment.destroy();
+  return res.json({})
+}))
 
 
 

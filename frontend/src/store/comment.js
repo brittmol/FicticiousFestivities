@@ -25,13 +25,13 @@ export const addComment = (newComment) => {
   }
 }
 
-// const DELETE_COMMENT = 'comment/DELETE_COMMENT'
-// export const deleteComment = (comment) => {
-//   return {
-//     type: DELETE_COMMENT,
-//     comment
-//   }
-// }
+const DELETE_COMMENT = 'comment/DELETE_COMMENT'
+export const deleteComment = (comment) => {
+  return {
+    type: DELETE_COMMENT,
+    comment
+  }
+}
 
 /* ------ THUNK ------ communicates to backend api and retrieves it */
 export const getComments = (id) => async (dispatch) => {
@@ -69,32 +69,33 @@ export const createComment = (data) => async (dispatch) => {
   }
 }
 
-// export const updateComment = (data) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/events/${id}/comments/${data.id}`, {
-//     method: 'put',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(data)
-//   });
+export const updateComment = (data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${data.eventId}/comments/${data.id}`, {
+    method: 'put',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  console.log('data =', data)
 
-//   if (response.ok) {
-//     const newComment = await response.json();
-//     dispatch(addComment(newComment));
-//     return newComment;
-//   }
-// }
+  if (response.ok) {
+    const newComment = await response.json();
+    dispatch(addComment(newComment));
+    return newComment;
+  }
+}
 
-// export const removeComment = (data) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/events/${id}/comments/${data.id}`, {
-//     method: 'delete'
-//   });
+export const removeComment = (data) => async (dispatch) => {
+  const response = await csrfFetch(`/api/events/${data.eventId}/comments/${data.id}`, {
+    method: 'delete'
+  });
 
-//   if (response.ok) {
-//     const comment = await response.json();
-//     dispatch(deleteComment(comment));
-//   }
-// }
+  if (response.ok) {
+    const comment = await response.json();
+    dispatch(deleteComment(comment));
+  }
+}
 
 /* ------ REDUCER ------ */
 
@@ -122,11 +123,11 @@ export default function commentReducer(state = initialState, action) {
           };
           return newState;
       }
-      // case DELETE_COMMENT: {
-      //   const newState = { ...state };
-      //   delete newState[action.comment];
-      //   return newState;
-      // }
+      case DELETE_COMMENT: {
+        const newState = { ...state };
+        delete newState[action.comment];
+        return newState;
+      }
       default:
         return state;
     }
