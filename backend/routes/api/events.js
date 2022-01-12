@@ -80,16 +80,18 @@ router.post('/:id/comments', requireAuth, validateComment, asyncHandler(async(re
 }))
 
 router.put('/:id/comments/:commentId', requireAuth, validateComment, asyncHandler(async(req, res) => {
+  console.log('EDIT req params', req.params)
   const comment = await Comment.findByPk(req.params.commentId)
   const updatedComment = await comment.update(req.body)
   return res.json(updatedComment)
 }))
 
 router.delete('/:id/comments/:commentId', requireAuth, asyncHandler(async(req, res) => {
+  console.log('DELETE req params', req.params)
   const comment = await Comment.findByPk(req.params.commentId)
   if (!comment) throw new Error('Cannot find comment');
   await comment.destroy();
-  return res.json({})
+  return res.json({comment})
 }))
 
 
