@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getComments } from '../../store/comment'
 import { useEffect } from 'react';
-import EditCommentForm from './EditComment';
+import EditCommentFormModal from './EditCommentModal';
 
 
 const LoadComments = ({user, eventId}) => {
@@ -24,8 +24,7 @@ const LoadComments = ({user, eventId}) => {
     let editCommentButton = (comment) => {
         return (
             <button className="tickets-button">
-                <i className="fas fa-edit" />
-                <EditCommentForm comment={comment} />
+                <EditCommentFormModal comment={comment} />
             </button>
         )
     }

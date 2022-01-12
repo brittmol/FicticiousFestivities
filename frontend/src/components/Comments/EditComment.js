@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { updateComment, removeComment } from '../../store/comment';
 import { useParams } from 'react-router';
 
-const EditCommentForm = ({comment}) => {
+const EditCommentForm = ({comment, onClose}) => {
     const { eventId} = useParams()
     console.log('eventId =', eventId)
     console.log('commentId =', comment.id)
@@ -20,7 +20,7 @@ const EditCommentForm = ({comment}) => {
 
         const payload = {
             id: newComment.id,
-            newComment,
+            comment: newComment.comment,
             eventId,
             userId: user.id,
         };
@@ -32,6 +32,7 @@ const EditCommentForm = ({comment}) => {
                 if(data && data.errors) return setErrors(data.errors)
             })
         if (updatedComment) {
+            onClose()
             history.push(`/events/${eventId}`);
         }
     };
