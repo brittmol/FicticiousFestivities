@@ -60,25 +60,24 @@ router.delete('/:id', requireAuth, asyncHandler(async(req, res) => {
 
 // ---------- Comments -----------
 
-// const validateComment = [
-//   check('comment')
-//     .exists({ checkFalsy: true })
-//     .withMessage('Please provide a comment.'),
-//   handleValidationErrors
-// ]
+const validateComment = [
+  check('comment')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a comment.'),
+  handleValidationErrors
+]
 
 router.get('/:id/comments', asyncHandler(async(req, res) => {
   const comments = await Comment.findAll({
     where: { eventId: req.params.id },
-    // order: [['createdAt', 'DESC']],
   })
   return res.json(comments)
 }))
 
-// router.post('/:id/comments/:commentId', requireAuth, validateComment, asyncHandler(async(req, res) => {
-//   const comment = await Comment.create(req.body)
-//   return res.json(comment)
-// }))
+router.post('/:id/comments', requireAuth, validateComment, asyncHandler(async(req, res) => {
+  const comment = await Comment.create(req.body)
+  return res.json(comment)
+}))
 
 // router.put('/:id/comments/:commentId', requireAuth, validateComment, asyncHandler(async(req, res) => {
 //   const comment = await Comment.findByPk(req.params.commentId)

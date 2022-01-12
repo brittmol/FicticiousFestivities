@@ -5,6 +5,8 @@ import { getTickets, createTicket, removeTicket } from '../../store/ticket'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
 import LoadComments from '../Comments/LoadComments';
+import CreateCommentForm from '../Comments/CreateComment';
+
 import './Events.css'
 
 export default function SingleEvent() {
@@ -62,6 +64,20 @@ export default function SingleEvent() {
         ticketButton = null;
     }
 
+    let createCommentBox;
+    if (sessionUser) {
+        createCommentBox = (
+            <>
+                <CreateCommentForm user={sessionUser} eventId={eventId}/>
+            </>
+        )
+    } else {
+        createCommentBox = (
+            <>
+                <h3>Login to Create a Comment!</h3>
+            </>
+        )
+    }
 
     let sessionLinks;
     if (sessionUser && sessionUser?.id === event?.hostId) {
@@ -96,7 +112,10 @@ export default function SingleEvent() {
                         <p>About: {event?.summary}</p>
                         {/* <p>Hosted by: {event?.hostId}</p> */}
                     </div>
-                    <LoadComments user={sessionUser} eventId={eventId}/>
+                    <div>
+                        {createCommentBox}
+                        <LoadComments user={sessionUser} eventId={eventId}/>
+                    </div>
                 </div>
             </section>
         </main>

@@ -18,7 +18,7 @@ const LoadComments = ({user, eventId}) => {
         return -1;
     })
 
-    console.log('commentsArr = ', commentsArr)
+    // console.log('commentsArr = ', commentsArr)
 
     let editCommentButton = (
         <button className="tickets-button">
@@ -29,7 +29,6 @@ const LoadComments = ({user, eventId}) => {
     return (
         <div className='comments'>
             <h2>Comments</h2>
-            <h3></h3>
             {commentsArr?.map((comment) => (
                 <div className='single_comment'>
                     <p>User: {comment?.userId}</p>
