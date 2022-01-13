@@ -4,6 +4,9 @@ import { getSingleEvent} from '../../store/event'
 import { getTickets, createTicket, removeTicket } from '../../store/ticket'
 import { useEffect } from 'react';
 import EditEventFormModal from './EditEventFormModal'
+import LoadComments from '../Comments/LoadComments';
+import CreateCommentForm from '../Comments/CreateComment';
+
 import './Events.css'
 
 export default function SingleEvent() {
@@ -22,9 +25,7 @@ export default function SingleEvent() {
     const event = useSelector(store => store.eventReducer[eventId]);
     const sessionUser = useSelector(state => state.session.user);
     const tickets = useSelector(store => store.ticketReducer);
-    // console.log('tickets[eventId]', tickets[eventId]?.userId)
-    // console.log('sessionUser', sessionUser?.id)
-    // console.log(sessionUser.id === tickets[eventId]?.userId)
+
     let ticketButton;
     if (tickets[eventId] && sessionUser?.id === tickets[eventId]?.userId) {
         ticketButton = (
@@ -59,8 +60,24 @@ export default function SingleEvent() {
                 Get Ticket!
             </button>
         )
+    } else {
+        ticketButton = null;
     }
 
+    let createCommentBox;
+    if (sessionUser) {
+        createCommentBox = (
+            <>
+                <CreateCommentForm user={sessionUser} eventId={eventId}/>
+            </>
+        )
+    } else {
+        createCommentBox = (
+            <>
+                <h3>Login to Create a Comment!</h3>
+            </>
+        )
+    }
 
     let sessionLinks;
     if (sessionUser && sessionUser?.id === event?.hostId) {
@@ -70,6 +87,24 @@ export default function SingleEvent() {
         </>
       );
     }
+
+    // --------- datetime --------------
+
+    const date = new Date(event?.datetime).toLocaleDateString('en-US')
+    const time = new Date(event?.datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
+    // const date = event?.datetime
+    // const dateObj = new Date(date)
+    // const day = dateObj.getUTCDate();
+    // const month = dateObj.getUTCMonth() + 1; //months from 1-12
+    // const year = dateObj.getUTCFullYear();
+    // const newdate = year + "/" + month + "/" + day;
+
+
+    console.log('date2 = ',date)
+    // console.log('dateObj = ', dateObj)
+    // console.log('year = ', year)
+    // console.log('month = ', month)
 
     return (
         <main>
@@ -90,10 +125,15 @@ export default function SingleEvent() {
                         <img src={event?.image} style={{height: '500px'}}></img>
                     </div>
                     <div className='card_content'>
+                        <p>Hosted by: {event?.User?.username}, #{event?.hostId}</p>
                         <p>Location: {event?.location}</p>
-                        <p>When: {event?.datetime}</p>
+                        <p>Date: {date}</p>
+                        <p>Time: {time}</p>
                         <p>About: {event?.summary}</p>
-                        {/* <p>Hosted by: {event?.hostId}</p> */}
+                    </div>
+                    <div>
+                        {createCommentBox}
+                        <LoadComments user={sessionUser} eventId={eventId}/>
                     </div>
                 </div>
             </section>

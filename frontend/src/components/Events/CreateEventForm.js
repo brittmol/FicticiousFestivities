@@ -29,20 +29,14 @@ const CreateEventForm = ({user, onClose}) => {
         };
 
         setErrors([])
-        dispatch(createEvent(payload))
-            // .then(event => history.push(`events/${event.id}`))
-            // .then(event => onClose())
+        const event = await dispatch(createEvent(payload))
             .catch(async(res) => {
                 const data = await res.json()
                 if(data && data.errors) return setErrors(data.errors)
             })
-
-        const event = await dispatch(createEvent(payload));
-        console.log('event =', event)
         if (event) {
           onClose()
           history.push(`/events/${event.id}`);
-        //   history.push(`/events`);
         }
     };
 
