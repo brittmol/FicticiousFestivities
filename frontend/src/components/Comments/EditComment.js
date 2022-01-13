@@ -39,22 +39,20 @@ const EditCommentForm = ({comment, onClose}) => {
     };
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <h2>Edit Comment</h2>
-                <ul style={{color: 'white'}}>
-                    {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                </ul>
-                <input
-                    type='text'
-                    value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
-                    // required
-                />
-                <button type="submit">
-                    <i className="fas fa-edit" />
-                </button>
-            </form>
+        <form onSubmit={handleSubmit}>
+            <h2>Edit Comment</h2>
+            <ul style={{color: 'white'}}>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
+            <input
+                type='text'
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+                // required
+            />
+            <button type="submit">
+                <i className="fas fa-edit" />
+            </button>
             <button onClick={() => {
                 dispatch(removeComment(comment))
                 onClose()
@@ -63,7 +61,7 @@ const EditCommentForm = ({comment, onClose}) => {
             >
                 <i className="fas fa-trash-alt" />
             </button>
-        </>
+        </form>
     )
 
 }

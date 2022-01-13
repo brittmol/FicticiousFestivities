@@ -70,7 +70,6 @@ export const createComment = (data) => async (dispatch) => {
 }
 
 export const updateComment = (data) => async (dispatch) => {
-  console.log('EDIT data =', data)
   const response = await csrfFetch(`/api/events/${data.eventId}/comments/${data.id}`, {
     method: 'put',
     headers: {
