@@ -28,6 +28,7 @@ const CreateCommentForm = ({user, eventId}) => {
                 if(data && data.errors) return setErrors(data.errors)
             })
         if (newComment) {
+            setComment('')
             history.push(`/events/${eventId}`);
         }
     };
