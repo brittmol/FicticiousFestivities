@@ -59,7 +59,6 @@ const NewEditCommentForm = ({comment, stopEditing}) => {
             />
             <button onClick={() => {
                 stopEditing()
-                history.push(`/events/${eventId}`)
             }}
             >
                 X
@@ -70,7 +69,6 @@ const NewEditCommentForm = ({comment, stopEditing}) => {
             <button onClick={() => {
                 dispatch(removeComment(comment))
                 stopEditing()
-                history.push(`/events/${eventId}`)
             }}
             >
                 <i className="fas fa-trash-alt" />
