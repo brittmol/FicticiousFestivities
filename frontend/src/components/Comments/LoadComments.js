@@ -34,7 +34,7 @@ const LoadComments = ({user, eventId}) => {
             <h2>Comments</h2>
             {commentsArr?.map((comment) => (
                 <div className='single_comment'>
-                    <p>User: {comment?.User.username}</p>
+                    <p>User: {comment?.User?.username}</p>
                     <p>{comment?.comment}</p>
                     <p>
                         {comment && user?.id === comment?.userId ? editCommentButton(comment) : null}
