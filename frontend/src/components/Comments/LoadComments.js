@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getComments } from '../../store/comment'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import EditCommentFormModal from './EditCommentModal';
 
 
@@ -29,8 +29,55 @@ const LoadComments = ({user, eventId}) => {
         )
     }
 
+    // -------------------- comment edit box -------------------
+    const oldstate = {
+        value: 'Some text here',
+        isInEditMode: false
+    }
+
+    const [state, setState] = useState(oldstate || '');
+
+
+    const changeEditMode = () => {
+        setState({
+            isInEditMode: !state.isInEditMode
+        })
+    }
+
+    let commentBox;
+    if (state.isInEditMode) {
+        commentBox = (
+          <div>
+              <input
+                type='text'
+                value={oldstate.value}
+                onChange={(e) => setState(e.target.value)}
+
+              />
+              <button onClick={changeEditMode}>X</button>
+              <button onClick={changeEditMode}>Ok</button>
+          </div>
+        );
+    } else {
+        commentBox = (
+            <div>
+                {oldstate.value}
+                <button onClick={changeEditMode}>Edit</button>
+            </div>
+        )
+    }
+
+    // -----------------------------------------------
+
     return (
         <div className='comments'>
+            <div>
+                {commentBox}
+            </div>
+
+            <br></br>
+            <br></br>
+
             <h2>Comments</h2>
             {commentsArr?.map((comment) => (
                 <div className='single_comment'>
