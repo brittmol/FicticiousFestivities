@@ -107,10 +107,10 @@ export default function SingleEvent() {
                         <img src={event?.image} style={{height: '500px'}}></img>
                     </div>
                     <div className='card_content'>
+                        <p>Hosted by: {event?.User?.username}, #{event?.hostId}</p>
                         <p>Location: {event?.location}</p>
                         <p>When: {event?.datetime}</p>
                         <p>About: {event?.summary}</p>
-                        {/* <p>Hosted by: {event?.hostId}</p> */}
                     </div>
                     <div>
                         {createCommentBox}

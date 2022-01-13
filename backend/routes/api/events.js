@@ -40,7 +40,9 @@ router.post('/', requireAuth, validateEvent, asyncHandler(async(req, res) => {
 }))
 
 router.get('/:id', asyncHandler(async(req, res) => {
-  const event = await Event.findByPk(req.params.id)
+  const event = await Event.findByPk(req.params.id, {
+    include: [User]
+  })
   return res.json(event)
 }))
 
@@ -70,6 +72,7 @@ const validateComment = [
 router.get('/:id/comments', asyncHandler(async(req, res) => {
   const comments = await Comment.findAll({
     where: { eventId: req.params.id },
+    include: [User]
   })
   return res.json(comments)
 }))
