@@ -88,6 +88,24 @@ export default function SingleEvent() {
       );
     }
 
+    // --------- datetime --------------
+
+    const date = new Date(event?.datetime).toLocaleDateString('en-US')
+    const time = new Date(event?.datetime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
+    // const date = event?.datetime
+    // const dateObj = new Date(date)
+    // const day = dateObj.getUTCDate();
+    // const month = dateObj.getUTCMonth() + 1; //months from 1-12
+    // const year = dateObj.getUTCFullYear();
+    // const newdate = year + "/" + month + "/" + day;
+
+
+    console.log('date2 = ',date)
+    // console.log('dateObj = ', dateObj)
+    // console.log('year = ', year)
+    // console.log('month = ', month)
+
     return (
         <main>
             <section className='single-card'>
@@ -109,7 +127,8 @@ export default function SingleEvent() {
                     <div className='card_content'>
                         <p>Hosted by: {event?.User?.username}, #{event?.hostId}</p>
                         <p>Location: {event?.location}</p>
-                        <p>When: {event?.datetime}</p>
+                        <p>Date: {date}</p>
+                        <p>Time: {time}</p>
                         <p>About: {event?.summary}</p>
                     </div>
                     <div>
