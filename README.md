@@ -7,7 +7,11 @@ Ficticious Festivities is an event website inspired by eventbrite. It is designe
 ![alt](https://i.imgur.com/gO3RJhg.png)
 
 ## Overall Structure
+### Database Schema 
+https://github.com/brittmol/soloReactProj/wiki/Database-Schema
+
 ### List of Features
+https://github.com/brittmol/soloReactProj/wiki/Features
   * Create an account
   * Login and logout
   * Login as a demo user
