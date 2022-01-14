@@ -49,7 +49,10 @@ router.get('/:id', asyncHandler(async(req, res) => {
 router.put('/:id', requireAuth, validateEvent, asyncHandler(async(req, res) => {
   const event = await Event.findByPk(req.params.id)
   const updatedEvent = await event.update(req.body)
-  return res.json(updatedEvent)
+  const updatedEventx = await Event.findByPk(updatedEvent.id, {
+    include: [User]
+  })
+  return res.json(updatedEventx)
 }))
 
 router.delete('/:id', requireAuth, asyncHandler(async(req, res) => {
@@ -79,13 +82,19 @@ router.get('/:id/comments', asyncHandler(async(req, res) => {
 
 router.post('/:id/comments', requireAuth, validateComment, asyncHandler(async(req, res) => {
   const comment = await Comment.create(req.body)
-  return res.json(comment)
+  const commentx = await Comment.findByPk(comment.id, {
+    include: [User]
+  })
+  return res.json(commentx)
 }))
 
 router.put('/:id/comments/:commentId', requireAuth, validateComment, asyncHandler(async(req, res) => {
   const comment = await Comment.findByPk(req.params.commentId)
   const updatedComment = await comment.update(req.body)
-  return res.json(updatedComment)
+  const updatedCommentx = await Comment.findByPk(updatedComment.id, {
+    include: [User]
+  })
+  return res.json(updatedCommentx)
 }))
 
 router.delete('/:id/comments/:commentId', requireAuth, asyncHandler(async(req, res) => {
