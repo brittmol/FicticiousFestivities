@@ -33,7 +33,8 @@ const LoadComments = ({user, eventId}) => {
         <div className='comments'>
             <h2>Comments</h2>
             {commentsArr?.map((comment) => (
-                <div className='single_comment'>
+                <div className='single_comment' key={comment.id}>
+                    {console.log('username', comment.User.username)}
                     <p>User: {comment?.User?.username}</p>
                     <p>{comment?.comment}</p>
                     <p>

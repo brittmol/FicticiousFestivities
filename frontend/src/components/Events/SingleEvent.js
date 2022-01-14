@@ -101,11 +101,6 @@ export default function SingleEvent() {
     // const newdate = year + "/" + month + "/" + day;
 
 
-    console.log('date2 = ',date)
-    // console.log('dateObj = ', dateObj)
-    // console.log('year = ', year)
-    // console.log('month = ', month)
-
     return (
         <main>
             <section className='single-card'>
