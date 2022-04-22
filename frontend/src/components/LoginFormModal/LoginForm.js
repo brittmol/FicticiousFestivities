@@ -46,6 +46,7 @@ function LoginForm() {
         <i className="fas fa-sign-in-alt"></i>
         Log In
       </button>
+      <DemoUser />
     </form>
   );
 }

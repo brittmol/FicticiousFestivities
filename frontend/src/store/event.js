@@ -1,8 +1,11 @@
 import { csrfFetch } from './csrf';
 
+// we place action inside of an ACTION CREATOR
+// ACTION CREATOR will be dispatched inside a component
+
 /* ----- ACTIONS ------ */
-const LOAD = 'event/LOAD'
-export const load = (events) => {
+const LOAD = 'event/LOAD' // action
+export const load = (events) => { // action-creator returns action
   return {
     type: LOAD,
     events

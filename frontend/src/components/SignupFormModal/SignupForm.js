@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import DemoUser from "../DemoUser/DemoUser";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -14,45 +15,50 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+      return dispatch(
+        sessionActions.signup({ email, username, password })
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
+    return setErrors([
+      "Confirm Password field must be the same as the Password field",
+    ]);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
       </ul>
       <h2>Sign up</h2>
       <input
         type="text"
-        placeholder='Email'
+        placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
       />
       <input
         type="text"
-        placeholder='Username'
+        placeholder="Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
       />
       <input
         type="password"
-        placeholder='Password'
+        placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
       />
       <input
         type="password"
-        placeholder='Confirm Password'
+        placeholder="Confirm Password"
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
         required
@@ -61,6 +67,7 @@ function SignupFormPage() {
         <i className="fas fa-sign-in-alt"></i>
         Sign Up
       </button>
+      <DemoUser />
     </form>
   );
 }
