@@ -1,5 +1,8 @@
 # Ficticious-Festivities
 
+## Link to live website
+https://ficticious-festivities.onrender.com
+
 ## Summary
 Ficticious Festivities is an event website inspired by eventbrite. It is designed for all users to explore a variety of events. Logged-in users can create events and get tickets to any individual event. 
 
@@ -42,5 +45,3 @@ https://github.com/brittmol/FicticiousFestivities/wiki/Features
 * express-validator
 * sequelize for database management
 
-### Link to live website
-https://ficticious-festivities.onrender.com
