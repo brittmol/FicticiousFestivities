@@ -1,4 +1,4 @@
-# soloReactProj
+# Ficticious-Festivities
 
 ## Summary
 Ficticious Festivities is an event website inspired by eventbrite. It is designed for all users to explore a variety of events. Logged-in users can create events and get tickets to any individual event. 
@@ -8,10 +8,10 @@ Ficticious Festivities is an event website inspired by eventbrite. It is designe
 
 ## Overall Structure
 ### Database Schema 
-https://github.com/brittmol/soloReactProj/wiki/Database-Schema
+https://github.com/brittmol/FicticiousFestivities/wiki/Database-Schema
 
 ### List of Features
-https://github.com/brittmol/soloReactProj/wiki/Features
+https://github.com/brittmol/FicticiousFestivities/wiki/Features
   * Create an account
   * Login and logout
   * Login as a demo user
@@ -43,4 +43,4 @@ https://github.com/brittmol/soloReactProj/wiki/Features
 * sequelize for database management
 
 ### Link to live website
-https://myfirstsoloproj.herokuapp.com/
+https://ficticious-festivities.onrender.com
