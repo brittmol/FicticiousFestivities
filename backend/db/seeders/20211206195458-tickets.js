@@ -1,8 +1,12 @@
-'use strict';
-
+"use strict";
+let options = {};
+if (process.env.NODE_ENV === "production") {
+  options.schema = process.env.SCHEMA; // define your schema in options object
+}
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Tickets', [
+    options.tableName = "Tickets";
+    return queryInterface.bulkInsert(options, [
       {
         userId: 1,
         eventId: 4,
@@ -63,10 +67,11 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
-    ], {});
+    ]);
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Tickets', null, {});
-  }
+    options.tableName = "Tickets";
+    return queryInterface.bulkDelete(options);
+  },
 };
